@@ -1,14 +1,24 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { PrincipalPage } from '../pages/principal/principal';
+import { ListadoEstudiantesPage } from '../pages/listado-estudiantes/listado-estudiantes';
+import { RecuperarContraseAPage } from '../pages/recuperar-contrase-a/recuperar-contrase-a';
+import { GraficoCurrsoPage } from '../pages/grafico-currso/grafico-currso';
+
+
+import { LoginPage } from '../pages/login/login';
+
+
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  @ViewChild(Nav) navCtrl: Nav;
+    rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -18,5 +28,20 @@ export class MyApp {
       splashScreen.hide();
     });
   }
+  goToPrincipal(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(PrincipalPage);
+  }goToListadoEstudiantes(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(ListadoEstudiantesPage);
+  }goToLogin(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(LoginPage);
+  }goToRecuperarContraseA(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(RecuperarContraseAPage);
+  }goToGraficoCurrso(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(GraficoCurrsoPage);
+  }
 }
-

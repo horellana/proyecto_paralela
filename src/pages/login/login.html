@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <form id="login-form1">
+    <img src="assets/img/c8kj9f9mRtK65roSE664_logo_utem.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" />
+    <div class="spacer" style="width:300px;height:46px;" id="login-spacer2"></div>
+    <ion-item id="login-input1">
+      <ion-label>
+        RUT:
+      </ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="login-input2">
+      <ion-label>
+        Contraseña:
+      </ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="login-checkbox1">
+      <ion-label>
+        Recordar cuenta
+      </ion-label>
+      <ion-checkbox></ion-checkbox>
+    </ion-item>
+    <button id="login-button1" ion-button color="positive" block on-click="goToPrincipal()">
+      Iniciar sesion
+    </button>
+    <button id="login-button2" ion-button clear color="positive" block on-click="goToRecuperarContraseA()">
+      ¿Olvidaste tu contraseña?
+    </button>
+  </form>
+</ion-content>
