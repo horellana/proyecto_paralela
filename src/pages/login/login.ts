@@ -1,43 +1,60 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { RecuperarContraseAPage } from '../recuperar-contrase-a/recuperar-contrase-a';
 import { PrincipalPage } from '../principal/principal';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
+import { catchError, tap } from 'rxjs/operators';
+
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+    selector: 'page-login',
+    templateUrl: 'login.html'
 })
 export class LoginPage {
     loginForm: FormBuilder;
 
     constructor(public navCtrl: NavController,
                 public formBuilder: FormBuilder,
+                public httpClient: HttpClient,
+                public alertCtrl: AlertController) {
+
         this.loginForm = this.formBuilder.group({
             rut: ['', Validators.required],
             password: ['', Validators.required]
         });
     }
+
     login(params) {
         if (this.loginForm.status === "INVALID") {
-            this.alertCtrl
-                .create({title: 'Error',
-                         subTitle: 'Por favor ingresa todos los datos'})
-                .present();
+            this.missingDataAlert().present();
             return;
         }
-    goToRecuperarContraseA(params){
-        if (!params) params = {};
-        this.navCtrl.setRoot(RecuperarContraseAPage);
+
+        let url =  'https://api.sebastian.cl/academia/api/v1/authentication/authenticate';
+        let data = {'rut': this.loginForm.value.rut,
+                    'password': this.loginForm.value.password};
+
+        this.httpClient
+            .post(url, data)
+            .subscribe(
+                result => {
+                },
+                error => {
+                    this.invalidDataAlert().present();
+                });
     }
 
-    goToLogin(params){
-        if (!params) params = {};
-        this.navCtrl.setRoot(LoginPage);
+    missingDataAlert() {
+        return this.alertCtrl.create({title: 'Error',
+                                      subTitle: 'Por favor ingresa todos los datos'});
     }
 
-    goToPrincipal(params){
-        if (!params) params = {};
-        this.navCtrl.setRoot(PrincipalPage);
+    invalidDataAlert() {
+        return this.alertCtrl.create({title: 'Error',
+                                      subTitle: 'Rut o contraseña incorrecto'});
+
     }
 }
