@@ -9,16 +9,18 @@ import { PrincipalPage } from '../principal/principal';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController) {
-  }
-  goToRecuperarContraseA(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(RecuperarContraseAPage);
-  }goToLogin(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(LoginPage);
-  }goToPrincipal(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(PrincipalPage);
-  }
+    goToRecuperarContraseA(params){
+        if (!params) params = {};
+        this.navCtrl.setRoot(RecuperarContraseAPage);
+    }
+
+    goToLogin(params){
+        if (!params) params = {};
+        this.navCtrl.setRoot(LoginPage);
+    }
+
+    goToPrincipal(params){
+        if (!params) params = {};
+        this.navCtrl.setRoot(PrincipalPage);
+    }
 }
