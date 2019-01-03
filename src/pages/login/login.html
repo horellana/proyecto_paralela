@@ -9,20 +9,20 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page4">
-  <form id="login-form1">
+  <form [formGroup]="loginForm" id="login-form1" (ngSubmit)="login()" novalidate>
     <img src="assets/img/c8kj9f9mRtK65roSE664_logo_utem.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" />
     <div class="spacer" style="width:300px;height:46px;" id="login-spacer2"></div>
     <ion-item id="login-input1">
       <ion-label>
         RUT:
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="text" placeholder="" formControlName="rut"></ion-input>
     </ion-item>
     <ion-item id="login-input2">
       <ion-label>
         Contraseña:
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="text" placeholder="" formControlName="password"></ion-input>
     </ion-item>
     <ion-item id="login-checkbox1">
       <ion-label>
@@ -30,11 +30,11 @@
       </ion-label>
       <ion-checkbox></ion-checkbox>
     </ion-item>
-    <button id="login-button1" ion-button color="positive" block on-click="goToPrincipal()">
+    <button id="login-button1" ion-button color="positive" block>
       Iniciar sesion
     </button>
-    <button id="login-button2" ion-button clear color="positive" block on-click="goToRecuperarContraseA()">
+    <input type="submit" id="login-button2" ion-button clear color="positive" block href-inappbrowser="/signup"/>
       ¿Olvidaste tu contraseña?
-    </button>
+    <!-- </input> -->
   </form>
 </ion-content>

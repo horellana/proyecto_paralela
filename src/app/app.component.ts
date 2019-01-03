@@ -3,7 +3,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { PrincipalPage } from '../pages/principal/principal';
+import { HomeEstudiantePage } from '../pages/HomeEstudiante/home_estudiante';
 import { ListadoEstudiantesPage } from '../pages/listado-estudiantes/listado-estudiantes';
 import { RecuperarContraseAPage } from '../pages/recuperar-contrase-a/recuperar-contrase-a';
 import { GraficoCurrsoPage } from '../pages/grafico-currso/grafico-currso';
@@ -30,7 +30,7 @@ export class MyApp {
   }
   goToPrincipal(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(PrincipalPage);
+    this.navCtrl.setRoot(HomeEstudiantePage);
   }goToListadoEstudiantes(params){
     if (!params) params = {};
     this.navCtrl.setRoot(ListadoEstudiantesPage);

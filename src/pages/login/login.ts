@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { RecuperarContraseAPage } from '../recuperar-contrase-a/recuperar-contrase-a';
-import { PrincipalPage } from '../principal/principal';
+import { HomeEstudiantePage } from '../HomeEstudiante/home_estudiante';
+import { HomeDocentePage } from '../home-docente/home-docente';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +15,7 @@ import { catchError, tap } from 'rxjs/operators';
     templateUrl: 'login.html'
 })
 export class LoginPage {
-    loginForm: FormBuilder;
+    loginForm: any;
 
     constructor(public navCtrl: NavController,
                 public formBuilder: FormBuilder,
@@ -41,6 +42,9 @@ export class LoginPage {
             .post(url, data)
             .subscribe(
                 result => {
+                    this.navCtrl.setRoot(result.role === "Docente"
+                                         ? HomeDocentePage
+                                         : HomeEstudiantePage);
                 },
                 error => {
                     this.invalidDataAlert().present();
