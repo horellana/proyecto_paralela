@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { RecuperarContraseAPage } from '../recuperar-contrase-a/recuperar-contrase-a';
-import { HomeEstudiantePage } from '../HomeEstudiante/home_estudiante';
+import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
 import { HomeDocentePage } from '../home-docente/home-docente';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -42,13 +42,20 @@ export class LoginPage {
             .post(url, data)
             .subscribe(
                 result => {
-                    this.navCtrl.setRoot(result.role === "Docente"
-                                         ? HomeDocentePage
-                                         : HomeEstudiantePage);
+                    let nextPage = result.role === "Docente"
+                        ? HomeDocentePage
+                        : HomeEstudiantePage;
+
+                    this.navCtrl.setRoot(nextPage, { rut: data.rut });
                 },
                 error => {
                     this.invalidDataAlert().present();
                 });
+    }
+
+    forgotPassword() {
+        console.log("Recuperar contraseña");
+        this.navCtrl.push(RecuperarContraseAPage);
     }
 
     missingDataAlert() {
