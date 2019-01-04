@@ -55,7 +55,7 @@ export class HomeDocentePage {
         this.httpClient
             .get(url, httpOptions)
             .subscribe(
-                result => {
+                (result: [any]) => {
                     this.nombreDocente = result[0].course.teacher.firstName + ' ' + result[0].course.teacher.lastName;
                     this.promedioCursos = this.calculateAvg(result);
                     this.ramosImpartidos = result.length;
