@@ -59,6 +59,23 @@ export class HomeDocentePage {
                     this.nombreDocente = result[0].course.teacher.firstName + ' ' + result[0].course.teacher.lastName;
                     this.promedioCursos = this.calculateAvg(result);
                     this.ramosImpartidos = result.length;
+
+                    let charData = this.calculateGraphData(result);
+
+                    let canvas = document.getElementById("canvas");
+                    this.chart = new Chart(canvas, {
+                        type: 'pie',
+                        data: {
+                            datasets: [{
+                                data: charData,
+                                backgroundColor: [
+                                    'rgb(75, 192, 192)', // Verde
+                                    'rgb(255, 99, 132)' // Rojo
+                                ]
+                            }],
+                            labels: [ 'Aprobados', 'Reprobados']
+                        }
+                    });
                 },
                 error => {
                     this.errorLoadingDataAlert().present()
@@ -78,8 +95,16 @@ export class HomeDocentePage {
         return Math.round(avg * 100) / 100;
     }
 
-    calculateGraphData(data) {
+    calculateGraphData(data : [any]) {
+        let aproved = 0;
+        let reproved = 0;
 
+        data.forEach(course => {
+            aproved = aproved + course.aproved;
+            reproved = reproved + course.reproved;
+        });
+
+        return [aproved, reproved];
     }
 
     errorLoadingDataAlert() {
