@@ -42,6 +42,7 @@ export class LoginPage {
             .post(url, data)
             .subscribe(
                 result => {
+                    console.log(result);
                     let nextPage = result.role === "Docente"
                         ? HomeDocentePage
                         : HomeEstudiantePage;
@@ -66,6 +67,5 @@ export class LoginPage {
     invalidDataAlert() {
         return this.alertCtrl.create({title: 'Error',
                                       subTitle: 'Rut o contraseña incorrecto'});
-
     }
 }
