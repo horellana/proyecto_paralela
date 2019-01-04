@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AlertController } from 'ionic-angular';
+
+import { Chart } from 'chart.js';
 
 /**
  * Generated class for the HomeDocentePage page.
@@ -10,11 +14,58 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-home-docente',
-  templateUrl: 'home-docente.html',
+    selector: 'page-home-docente',
+    templateUrl: 'home-docente.html',
 })
 export class HomeDocentePage {
+    rut: string;
+    apiKey: string;
+    chart: any = null;
+
+    nombreDocente: string;
+
+    datos = [];
+
     promedioCursos: number;
+    ramosImpartidos: number;
+
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public httpClient: HttpClient,
+                public alertCtrl: AlertController) {
+        // this.rut = navParams.get("rut");
+        // this.apiKey = navParams.get("apiKey");
+        this.rut = "15.997.886-9";
+        this.apiKey = "d228b2cd-c3ba-479e-9794-ca0a9c71c92b";
+    }
+
+    ionViewDidLoad() {
+    }
+
+
+    showPieGraph(data) {
+    }
+
+    ngOnInit() {
+        let url = `https://api.sebastian.cl/academia/api/v1/courses/teachers/${this.rut}/stats`;
+        const httpOptions = {
+            headers: new HttpHeaders({ 'X-API-KEY': this.apiKey})
+        };
+
+        this.httpClient
+            .get(url, httpOptions)
+            .subscribe(
+                result => {
+                    this.nombreDocente = result[0].course.teacher.firstName + ' ' + result[0].course.teacher.lastName;
+                    this.promedioCursos = this.calculateAvg(result);
+                    this.ramosImpartidos = result.length;
+                },
+                error => {
+                    this.errorLoadingDataAlert().present()
+                }
+            );
+    }
+
     calculateAvg(data : [any]) {
         let avg : number = 0;
 
@@ -27,11 +78,12 @@ export class HomeDocentePage {
         return Math.round(avg * 100) / 100;
     }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    calculateGraphData(data) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomeDocentePage');
-  }
+    }
 
+    errorLoadingDataAlert() {
+        return this.alertCtrl.create({ title: "Error",
+                                       subTitle: "Error al cargar los datos"});
+    }
 }
