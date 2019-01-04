@@ -1,8 +1,8 @@
 <!--
-  Generated template for the HomeDocentePage page.
+     Generated template for the HomeDocentePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+     See http://ionicframework.com/docs/components/#navigation for more info on
+     Ionic pages and navigation.
 -->
 <ion-header>
 
@@ -18,6 +18,17 @@
 
 
 <ion-content padding>
+    <h4>
+      {{ nombreDocente}}
+    </h4>
+
+    <label>
+      Impartidos {{ ramosImpartidos }} ramos
+    </label>
+
+    <canvas id="canvas">
+      {{ this.chart }}
+    </canvas>
 
     <label>
       Promedio cursos: {{ promedioCursos }}
