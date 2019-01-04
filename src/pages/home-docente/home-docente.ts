@@ -14,6 +14,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home-docente.html',
 })
 export class HomeDocentePage {
+    promedioCursos: number;
+    calculateAvg(data : [any]) {
+        let avg : number = 0;
+
+        data.forEach(course => {
+            avg = avg + course.average;
+        });
+
+        avg = avg / data.length;
+
+        return Math.round(avg * 100) / 100;
+    }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
