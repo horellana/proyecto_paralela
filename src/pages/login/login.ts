@@ -46,7 +46,7 @@ export class LoginPage {
     }
 
     onLogin(result) {
-        this.navCtrl.setRoot(MenuPage);
+        this.navCtrl.push(MenuPage);
     }
 
     onLoginError(error) {
