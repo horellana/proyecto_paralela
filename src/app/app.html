@@ -7,19 +7,19 @@
     </ion-toolbar>
   </ion-header>
   <ion-content id="side-menu21">
-    <ion-list id="menu-list1">
-      <ion-item color="none" menuClose="" on-click="goToPrincipal()" id="menu-list-item1">
-        Home
-      </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToGraficoCurrso()" id="menu-list-item7">
-        Estadisticas Curso
-      </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToListadoEstudiantes()" id="menu-list-item2">
-        Listado Estudiantes
-      </ion-item>
-      <ion-item color="assertive" menuClose="" on-click="goToLogin()" id="menu-list-item3">
-        Cerrar Sesion
-      </ion-item>
+    <ion-list id="menu-list1" *ngFor="">
+      <!-- <ion-item color="none" menuClose="" on-click="goToPrincipal()" id="menu-list-item1">
+           Home
+           </ion-item>
+           <ion-item color="none" menuClose="" on-click="goToGraficoCurrso()" id="menu-list-item7">
+           Estadisticas Curso
+           </ion-item>
+           <ion-item color="none" menuClose="" on-click="goToListadoEstudiantes()" id="menu-list-item2">
+           Listado Estudiantes
+           </ion-item>
+           <ion-item color="assertive" menuClose="" on-click="goToLogin()" id="menu-list-item3">
+           Cerrar Sesion
+           </ion-item> -->
     </ion-list>
   </ion-content>
 </ion-menu>

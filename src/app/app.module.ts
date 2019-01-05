@@ -51,7 +51,6 @@ import { LoginProvider } from './../providers/login/login';
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LoginProvider,
     LoginProvider
     ]
 })

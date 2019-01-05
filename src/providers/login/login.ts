@@ -21,6 +21,10 @@ export class LoginProvider {
     constructor(public httpClient: HttpClient) {
     }
 
+    isLogged() {
+        return this.user.role != null;
+    }
+
     tryLogin(rut: string, password: string) {
         let data = { rut: rut, password: password };
 
