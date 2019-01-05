@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { PrincipalPage } from '../principal/principal';
+import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
 
 @Component({
   selector: 'page-avisos-profesor',
@@ -12,6 +12,6 @@ export class AvisosProfesorPage {
   }
   goToPrincipal(params){
     if (!params) params = {};
-    this.navCtrl.push(PrincipalPage);
+    this.navCtrl.push(HomeEstudiantePage);
   }
 }

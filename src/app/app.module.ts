@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomeEstudiantePage } from '../pages/HomeEstudiante/home_estudiante';
+import { HomeEstudiantePage } from '../pages/home-estudiante/home-estudiante';
 import { ListadoEstudiantesPage } from '../pages/listado-estudiantes/listado-estudiantes';
 import { CloudPage } from '../pages/cloud/cloud';
 import { LoginPage } from '../pages/login/login';

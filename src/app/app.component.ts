@@ -3,7 +3,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomeEstudiantePage } from '../pages/HomeEstudiante/home_estudiante';
+import { HomeEstudiantePage } from '../pages/home-estudiante/home-estudiante';
 import { ListadoEstudiantesPage } from '../pages/listado-estudiantes/listado-estudiantes';
 import { RecuperarContraseAPage } from '../pages/recuperar-contrase-a/recuperar-contrase-a';
 import { GraficoCurrsoPage } from '../pages/grafico-currso/grafico-currso';

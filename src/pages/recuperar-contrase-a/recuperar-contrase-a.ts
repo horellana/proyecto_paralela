@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { PrincipalPage } from '../principal/principal';
+import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
 
 @Component({
   selector: 'page-recuperar-contrase-a',
@@ -19,6 +19,6 @@ export class RecuperarContraseAPage {
     this.navCtrl.setRoot(RecuperarContraseAPage);
   }goToPrincipal(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(PrincipalPage);
+    this.navCtrl.setRoot(HomeEstudiantePage);
   }
 }
