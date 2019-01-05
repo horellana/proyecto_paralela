@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 */
 @Injectable()
 export class LoginProvider {
-    user = {
+    user : any = {
         rut: null,
         role: null,
         apiKey: null
@@ -30,7 +30,7 @@ export class LoginProvider {
 
         return this.httpClient
             .post(this.loginUrl, data)
-            .pipe(tap(data => {
+            .pipe(tap((data : any) => {
                 console.log(data);
 
                 this.user.rut = data.rut;
