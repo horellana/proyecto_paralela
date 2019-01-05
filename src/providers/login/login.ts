@@ -31,8 +31,6 @@ export class LoginProvider {
         return this.httpClient
             .post(this.loginUrl, data)
             .pipe(tap((data : any) => {
-                console.log(data);
-
                 this.user.rut = data.rut;
                 this.user.role = data.role;
                 this.user.apiKey = data.apiKey;

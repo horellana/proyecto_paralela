@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
 import { LoginProvider } from '../../providers/login/login';
+
 
 /**
  * Generated class for the HomeDocentePage page.

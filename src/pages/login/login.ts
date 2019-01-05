@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { RecuperarContraseAPage } from '../recuperar-contrase-a/recuperar-contrase-a';
+
 import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
 import { HomeDocentePage } from '../home-docente/home-docente';
+import { MenuPage } from '../menu/menu';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-
-import { catchError, tap } from 'rxjs/operators';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { LoginProvider } from '../../providers/login/login';
 
@@ -47,13 +46,7 @@ export class LoginPage {
     }
 
     onLogin(result) {
-        let nextPage = result.role === "Docente"
-            ? HomeDocentePage
-            : HomeEstudiantePage;
-
-        this.navCtrl.setRoot(nextPage, result);
-
-        console.log(this.loginProvider);
+        this.navCtrl.setRoot(MenuPage);
     }
 
     onLoginError(error) {

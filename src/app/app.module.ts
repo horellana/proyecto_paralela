@@ -18,6 +18,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginProvider } from './../providers/login/login';
 
+import { MenuPage } from '../pages/menu/menu';
+
 @NgModule({
     declarations: [
         MyApp,
@@ -28,7 +30,8 @@ import { LoginProvider } from './../providers/login/login';
         RecuperarContraseAPage,
         AvisosProfesorPage,
         GraficoCurrsoPage,
-        HomeDocentePage
+        HomeDocentePage,
+        MenuPage
     ],
     imports: [
         BrowserModule,
@@ -45,13 +48,14 @@ import { LoginProvider } from './../providers/login/login';
         RecuperarContraseAPage,
         AvisosProfesorPage,
         GraficoCurrsoPage,
-        HomeDocentePage
+        HomeDocentePage,
+        MenuPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LoginProvider
+        LoginProvider,
     ]
 })
 export class AppModule {}
