@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
+import { LoginProvider } from './../../providers/login/login';
 
 /**
  * Generated class for the HomeDocentePage page.
@@ -18,8 +19,6 @@ import { Chart } from 'chart.js';
     templateUrl: 'home-docente.html',
 })
 export class HomeDocentePage {
-    rut: string;
-    apiKey: string;
     chart: any = null;
 
     nombreDocente: string;
@@ -32,24 +31,15 @@ export class HomeDocentePage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public httpClient: HttpClient,
-                public alertCtrl: AlertController) {
-        // this.rut = navParams.get("rut");
-        // this.apiKey = navParams.get("apiKey");
-        this.rut = "15.997.886-9";
-        this.apiKey = "d228b2cd-c3ba-479e-9794-ca0a9c71c92b";
-    }
-
-    ionViewDidLoad() {
-    }
-
-
-    showPieGraph(data) {
+                public alertCtrl: AlertController,
+                public loginProvider: LoginProvider) {
     }
 
     ngOnInit() {
-        let url = `https://api.sebastian.cl/academia/api/v1/courses/teachers/${this.rut}/stats`;
+        let rut = this.loginProvider.user.rut;
+        let url = `https://api.sebastian.cl/academia/api/v1/courses/teachers/${rut}/stats`;
         const httpOptions = {
-            headers: new HttpHeaders({ 'X-API-KEY': this.apiKey})
+            headers: new HttpHeaders({ 'X-API-KEY': this.loginProvider.user.apiKey})
         };
 
         this.httpClient

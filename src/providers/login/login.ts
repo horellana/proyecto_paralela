@@ -28,7 +28,10 @@ export class LoginProvider {
             .post(this.loginUrl, data)
             .pipe(tap(data => {
                 this.user.rut = data.rut;
-                this.user.role = data.role
+                this.user.role = data.role;
+                this.user.apiKey = data.apiKey;
+
+                console.log(this.user);
             }));
     }
 }
