@@ -11,7 +11,7 @@
 
     <ion-list id="menu-list1">
       <div *ngFor="let page of pages">
-        <ion-item color="none" menuClose="">
+        <ion-item color="none" menuClose="" (click)="goToPage(page)">
           {{ page.title }}
         </ion-item>
       </div>

@@ -3,8 +3,6 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { RecuperarContraseAPage } from '../recuperar-contrase-a/recuperar-contrase-a';
 
-import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
-import { HomeDocentePage } from '../home-docente/home-docente';
 import { MenuPage } from '../menu/menu';
 
 import { FormBuilder, Validators } from '@angular/forms';

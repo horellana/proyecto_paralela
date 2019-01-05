@@ -1,5 +1,5 @@
 import { Component,  ViewChild } from '@angular/core';
-import { IonicPage, NavController, App,  Nav } from 'ionic-angular';
+import { IonicPage, NavController, Nav } from 'ionic-angular';
 
 import { LoginPage } from '../../pages/login/login';
 import { LoginProvider } from '../../providers/login/login';
@@ -44,10 +44,14 @@ export class MenuPage {
 
     constructor(
         public loginProvider: LoginProvider,
-        public navCtrl: NavController,
-        private appCtrl: App
-        ) {
+        public navCtrl: NavController
+    )
+    {
+    }
 
+    goToPage(page : any) {
+        console.log("going to" + page);
+        this.nav.setRoot(page.page);
     }
 
     logout() {
