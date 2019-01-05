@@ -30,11 +30,14 @@
       </ion-label>
       <ion-checkbox></ion-checkbox>
     </ion-item>
+
     <button id="login-button1" ion-button color="positive" block>
       Iniciar sesion
     </button>
-    <input type="submit" id="login-button2" ion-button clear color="positive" block href-inappbrowser="/signup"/>
-      ¿Olvidaste tu contraseña?
-    <!-- </input> -->
   </form>
+
+  <button ion-button color="light" block (click)="forgotPassword()">
+    Recuperar contraseña
+  </button>
+
 </ion-content>

@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { catchError, tap } from 'rxjs/operators';
 
+import { LoginProvider } from './../../providers/login/login';
+
 @Component({
     selector: 'page-login',
     templateUrl: 'login.html'
@@ -19,13 +21,16 @@ export class LoginPage {
 
     constructor(public navCtrl: NavController,
                 public formBuilder: FormBuilder,
-                public httpClient: HttpClient,
-                public alertCtrl: AlertController) {
+                public alertCtrl: AlertController,
+                public loginProvider: LoginProvider) {
 
         this.loginForm = this.formBuilder.group({
             rut: ['', Validators.required],
             password: ['', Validators.required]
         });
+
+        this.onLogin = this.onLogin.bind(this);
+        this.onLoginError = this.onLoginError.bind(this);
     }
 
     login(params) {
@@ -34,24 +39,23 @@ export class LoginPage {
             return;
         }
 
-        let url =  'https://api.sebastian.cl/academia/api/v1/authentication/authenticate';
-        let data = {'rut': this.loginForm.value.rut,
-                    'password': this.loginForm.value.password};
+        this.loginProvider
+            .tryLogin(this.loginForm.value.rut,
+                      this.loginForm.value.password)
+            .subscribe(this.onLogin,
+                       this.onLoginError);
+    }
 
-        this.httpClient
-            .post(url, data)
-            .subscribe(
-                result => {
-                    console.log(result);
-                    let nextPage = result.role === "Docente"
-                        ? HomeDocentePage
-                        : HomeEstudiantePage;
+    onLogin(result) {
+        let nextPage = result.role === "Docente"
+            ? HomeDocentePage
+            : HomeEstudiantePage;
 
-                    this.navCtrl.setRoot(nextPage, result);
-                },
-                error => {
-                    this.invalidDataAlert().present();
-                });
+        this.navCtrl.setRoot(nextPage, result);
+    }
+
+    onLoginError(error) {
+        this.invalidDataAlert().present();
     }
 
     forgotPassword() {
