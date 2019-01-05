@@ -27,11 +27,15 @@ export class LoginProvider {
         return this.httpClient
             .post(this.loginUrl, data)
             .pipe(tap(data => {
+                console.log(data);
+
                 this.user.rut = data.rut;
                 this.user.role = data.role;
                 this.user.apiKey = data.apiKey;
 
+                console.log("====== From login provider ======");
                 console.log(this.user);
+                console.log("====== Login provider done ====== ")
             }));
     }
 }

@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { catchError, tap } from 'rxjs/operators';
 
-import { LoginProvider } from './../../providers/login/login';
+import { LoginProvider } from '../../providers/login/login';
 
 @Component({
     selector: 'page-login',
@@ -52,6 +52,8 @@ export class LoginPage {
             : HomeEstudiantePage;
 
         this.navCtrl.setRoot(nextPage, result);
+
+        console.log(this.loginProvider);
     }
 
     onLoginError(error) {

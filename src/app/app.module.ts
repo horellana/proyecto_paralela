@@ -16,7 +16,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HttpClientModule } from '@angular/common/http';
-import { LoginProvider } from '../providers/login/login';
+import { LoginProvider } from './../providers/login/login';
 
 @NgModule({
     declarations: [

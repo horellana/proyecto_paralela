@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
-import { LoginProvider } from './../../providers/login/login';
+import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the HomeDocentePage page.
@@ -33,6 +33,8 @@ export class HomeDocentePage {
                 public httpClient: HttpClient,
                 public alertCtrl: AlertController,
                 public loginProvider: LoginProvider) {
+
+        console.log(loginProvider);
     }
 
     ngOnInit() {
