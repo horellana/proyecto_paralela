@@ -39,20 +39,29 @@ export class LoginPage {
             return;
         }
 
+        this.academiaProvider.setBackendUrl(this.loginForm.value.backendUrl);
+
         this.loginProvider
             .tryLogin(this.loginForm.value.rut,
-                      this.loginForm.value.password)
+                      this.loginForm.value.password,
+                      this.academiaProvider.backendUrl)
             .subscribe(this.onLogin,
                        this.onLoginError);
     }
 
     onLogin(result) {
-        this.academiaProvider.setBackendUrl(this.loginForm.value.backendUrl);
         this.navCtrl.push(MenuPage);
     }
 
     onLoginError(error) {
-        this.invalidDataAlert().present();
+        console.log(error);
+
+        let message = error.status === 404
+            ? error.message
+            : error.error.message;
+
+
+        this.invalidDataAlert(message).present()
     }
 
     forgotPassword() {
@@ -65,8 +74,8 @@ export class LoginPage {
                                       subTitle: 'Por favor ingresa todos los datos'});
     }
 
-    invalidDataAlert() {
+    invalidDataAlert(message) {
         return this.alertCtrl.create({title: 'Error',
-                                      subTitle: 'Rut o contraseña incorrecto'});
+                                      subTitle: message});
     }
 }

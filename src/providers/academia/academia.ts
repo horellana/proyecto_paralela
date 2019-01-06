@@ -17,6 +17,11 @@ export class AcademiaProvider {
 
     setBackendUrl(newUrl) {
         console.log("newUrl = " + newUrl);
+
+        if (newUrl[newUrl.length - 1] != '/') {
+            newUrl = newUrl + '/';
+        }
+
         this.backendUrl = newUrl;
     }
 

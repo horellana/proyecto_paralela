@@ -16,7 +16,7 @@ export class LoginProvider {
         apiKey: null
     };
 
-    loginUrl = 'https://api.sebastian.cl/academia/api/v1/authentication/authenticate';
+    loginUrl = 'authentication/authenticate';
 
     constructor(public httpClient: HttpClient) {
     }
@@ -25,11 +25,12 @@ export class LoginProvider {
         return this.user.role != null;
     }
 
-    tryLogin(rut: string, password: string) {
+    tryLogin(rut: string, password: string, backend : string) {
+        let url = backend + this.loginUrl;
         let data = { rut: rut, password: password };
 
         return this.httpClient
-            .post(this.loginUrl, data)
+            .post(url, data)
             .pipe(tap((data : any) => {
                 this.user.rut = data.rut;
                 this.user.role = data.role;
