@@ -16,6 +16,7 @@ export class AcademiaProvider {
     }
 
     setBackendUrl(newUrl) {
+        console.log("newUrl = " + newUrl);
         this.backendUrl = newUrl;
     }
 

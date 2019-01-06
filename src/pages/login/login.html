@@ -21,12 +21,25 @@
       </ion-label>
       <ion-input type="password" placeholder="" formControlName="password"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label>
+        URL Backend
+      </ion-label>
+
+      <ion-input type="text"
+                 value="https://api.sebastian.cl/academia/api/v1/"
+                 formControlName="backendUrl">
+      </ion-input>
+    </ion-item>
+
     <ion-item id="login-checkbox1">
       <ion-label>
         Recordar cuenta
       </ion-label>
       <ion-checkbox></ion-checkbox>
     </ion-item>
+
 
     <button id="login-button1" ion-button color="positive" block>
       Iniciar sesion

@@ -8,6 +8,7 @@ import { MenuPage } from '../menu/menu';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { LoginProvider } from '../../providers/login/login';
+import { AcademiaProvider } from '../../providers/academia/academia';
 
 @Component({
     selector: 'page-login',
@@ -19,11 +20,13 @@ export class LoginPage {
     constructor(public navCtrl: NavController,
                 public formBuilder: FormBuilder,
                 public alertCtrl: AlertController,
-                public loginProvider: LoginProvider) {
+                public loginProvider: LoginProvider,
+                public academiaProvider: AcademiaProvider) {
 
         this.loginForm = this.formBuilder.group({
             rut: ['', Validators.required],
-            password: ['', Validators.required]
+            password: ['', Validators.required],
+            backendUrl: ['', Validators.required]
         });
 
         this.onLogin = this.onLogin.bind(this);
@@ -44,6 +47,7 @@ export class LoginPage {
     }
 
     onLogin(result) {
+        this.academiaProvider.setBackendUrl(this.loginForm.value.backendUrl);
         this.navCtrl.push(MenuPage);
     }
 
