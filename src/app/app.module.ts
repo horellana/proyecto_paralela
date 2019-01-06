@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginProvider } from './../providers/login/login';
 
 import { MenuPage } from '../pages/menu/menu';
+import { AcademiaProvider } from '../providers/academia/academia';
 
 @NgModule({
     declarations: [
@@ -60,6 +61,7 @@ import { MenuPage } from '../pages/menu/menu';
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         LoginProvider,
+        AcademiaProvider,
     ]
 })
 export class AppModule {}

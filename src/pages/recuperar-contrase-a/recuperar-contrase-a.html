@@ -12,18 +12,19 @@
   <form id="recuperarContraseA-form3">
     <div id="recuperarContraseA-markdown1" class="show-list-numbers-and-dots">
       <p style="color:#000000;">
-        Ingresa tu correo electronico para poder recuperar tu contraseña
+        Ingresa tu rut para poder recuperar tu contraseña
       </p>
     </div>
     <ion-list id="recuperarContraseA-list3">
       <ion-item id="recuperarContraseA-input7">
         <ion-label>
-          Email
+          Rut
         </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
+        <ion-input [(ngModel)]="rut" name="rut" type="text" placeholder="" required>
+        </ion-input>
       </ion-item>
     </ion-list>
-    <button id="recuperarContraseA-button4" ion-button color="positive" block on-click="goToLogin()">
+    <button id="recuperarContraseA-button4" ion-button color="positive" block on-click="recuperar()">
       Recuperar
     </button>
   </form>
