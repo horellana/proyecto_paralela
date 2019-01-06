@@ -8,9 +8,10 @@ import { CloudPage } from '../pages/cloud/cloud';
 import { LoginPage } from '../pages/login/login';
 import { RecuperarContraseAPage } from '../pages/recuperar-contrase-a/recuperar-contrase-a';
 import { AvisosProfesorPage } from '../pages/avisos-profesor/avisos-profesor';
-import { GraficoCurrsoPage } from '../pages/grafico-currso/grafico-currso';
 import { HomeDocentePage } from '../pages/home-docente/home-docente';
 import { ListadoDocentesPage } from '../pages/listado-docentes/listado-docentes';
+import { GraficoCursoPage } from '../pages/grafico-curso/grafico-curso';
+
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -30,10 +31,10 @@ import { MenuPage } from '../pages/menu/menu';
         LoginPage,
         RecuperarContraseAPage,
         AvisosProfesorPage,
-        GraficoCurrsoPage,
         HomeDocentePage,
         MenuPage,
-        ListadoDocentesPage
+        ListadoDocentesPage,
+        GraficoCursoPage
     ],
     imports: [
         BrowserModule,
@@ -49,10 +50,10 @@ import { MenuPage } from '../pages/menu/menu';
         LoginPage,
         RecuperarContraseAPage,
         AvisosProfesorPage,
-        GraficoCurrsoPage,
         HomeDocentePage,
         MenuPage,
-        ListadoDocentesPage
+        ListadoDocentesPage,
+        GraficoCursoPage
     ],
     providers: [
         StatusBar,

@@ -6,6 +6,7 @@ import { LoginProvider } from '../../providers/login/login';
 
 import { HomeEstudiantePage } from '../../pages/home-estudiante/home-estudiante';
 import { ListadoEstudiantesPage } from '../../pages/listado-estudiantes/listado-estudiantes';
+import { GraficoCursoPage } from '../../pages/grafico-curso/grafico-curso';
 
 import { HomeDocentePage } from '../../pages/home-docente/home-docente';
 import { ListadoDocentesPage } from '../../pages/listado-docentes/listado-docentes';
@@ -49,7 +50,11 @@ export class MenuPage {
 
         { title: "Listado Estudiantes",
           page: ListadoEstudiantesPage,
-          icon: "ios-list-box-outline" }
+          icon: "ios-list-box-outline" },
+
+        { title: "Grafico Curso",
+          page: GraficoCursoPage,
+          icon: "" }
     ];
 
     constructor(
@@ -75,6 +80,7 @@ export class MenuPage {
         }
         else {
             this.pages = this.alumnoPages;
+            this.nav.setRoot(HomeEstudiantePage);
         }
 
         console.log(this.pages);
