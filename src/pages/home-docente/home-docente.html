@@ -17,19 +17,23 @@
 
 
 <ion-content padding>
-  <h4>
-    {{ nombreDocente}}
-  </h4>
+  <ion-list>
+    <ion-item>
+      <label>
+        {{ nombreDocente}}
+      </label>
+    </ion-item>
 
-  <label>
-    Impartidos {{ ramosImpartidos }} ramos
-  </label>
+    <ion-item>
+      Ramos impartidos: {{ ramosImpartidos }}
+      <!-- Impartidos {{ ramosImpartidos }} ramos -->
+    </ion-item>
+
+    <ion-item>
+      Promedio cursos: {{ promedioCursos }}
+    </ion-item>
+  </ion-list>
 
   <canvas id="canvas">
   </canvas>
-
-  <label>
-    Promedio cursos: {{ promedioCursos }}
-  </label>
-
 </ion-content>
