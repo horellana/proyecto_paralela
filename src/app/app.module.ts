@@ -10,6 +10,7 @@ import { RecuperarContraseAPage } from '../pages/recuperar-contrase-a/recuperar-
 import { AvisosProfesorPage } from '../pages/avisos-profesor/avisos-profesor';
 import { GraficoCurrsoPage } from '../pages/grafico-currso/grafico-currso';
 import { HomeDocentePage } from '../pages/home-docente/home-docente';
+import { ListadoDocentesPage } from '../pages/listado-docentes/listado-docentes';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,7 +32,8 @@ import { MenuPage } from '../pages/menu/menu';
         AvisosProfesorPage,
         GraficoCurrsoPage,
         HomeDocentePage,
-        MenuPage
+        MenuPage,
+        ListadoDocentesPage
     ],
     imports: [
         BrowserModule,
@@ -49,7 +51,8 @@ import { MenuPage } from '../pages/menu/menu';
         AvisosProfesorPage,
         GraficoCurrsoPage,
         HomeDocentePage,
-        MenuPage
+        MenuPage,
+        ListadoDocentesPage
     ],
     providers: [
         StatusBar,

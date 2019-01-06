@@ -8,6 +8,8 @@ import { HomeEstudiantePage } from '../../pages/home-estudiante/home-estudiante'
 import { ListadoEstudiantesPage } from '../../pages/listado-estudiantes/listado-estudiantes';
 
 import { HomeDocentePage } from '../../pages/home-docente/home-docente';
+import { ListadoDocentesPage } from '../../pages/listado-docentes/listado-docentes';
+import { AvisosProfesorPage } from '../../pages/avisos-profesor/avisos-profesor'
 
 /**
  * Generated class for the MenuPage page.
@@ -30,6 +32,14 @@ export class MenuPage {
         { title: "Home",
           page: HomeDocentePage,
           icon: "ios-home-outline" },
+
+        { title: "Avisos Profesor",
+          page: AvisosProfesorPage,
+          icon: "" },
+
+        { title: "Listado Profesores",
+          page: ListadoDocentesPage,
+          icon: "" }
     ];
 
     alumnoPages : [any] = [
