@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
-import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
 import { AlertController } from 'ionic-angular';
 
 
