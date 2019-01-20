@@ -39,7 +39,9 @@ import { AcademiaProvider } from '../providers/academia/academia';
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(MyApp),
+        IonicModule.forRoot(MyApp, {
+            iconMode: 'ios'
+        }),
         HttpClientModule
     ],
     bootstrap: [IonicApp],

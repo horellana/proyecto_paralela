@@ -1,5 +1,7 @@
 {
   "name": "proyecto_universidad",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

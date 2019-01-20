@@ -17,7 +17,6 @@ import { forkJoin } from "rxjs/observable/forkJoin";
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
     selector: 'page-listado-docentes',
@@ -78,8 +77,6 @@ export class ListadoDocentesPage {
 
         this.shownCourses = [];
 
-        let tmp = [];
-
         let apiKey = this.loginProvider.user.apiKey;
         let courseData = this.data.filter(c => c.name ==  this.course)[0];
 
@@ -91,12 +88,8 @@ export class ListadoDocentesPage {
             .map(c => this.academiaProvider.course_stats(courseData.code, c.year, c.semester, apiKey))
 
         forkJoin(requests).subscribe(
-            result => {
-                this.shownCourses = result
-                    .flat()
-                    // .sort((a, b) => a.year - b.year)
-                    // .reverse()
-
+            (result) => {
+                this.shownCourses = [].concat.apply([], result);
                 loader.dismiss();
             }
         );
