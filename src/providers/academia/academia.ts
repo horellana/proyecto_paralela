@@ -1,5 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+
+import { Course } from '../../models/course';
 
 /*
   Generated class for the AcademiaProvider provider.
@@ -27,6 +30,79 @@ export class AcademiaProvider {
 
     forgotPassword(rut: string) {
         let url = this.backendUrl + `authentication/forgot/${rut}`;
+
         return this.http.post(url, {});
+    }
+
+    course_stats(subjectCode, year, semester, apiKey) {
+        let url = this.backendUrl + 'courses/subject/stats';
+
+        let httpOptions = {
+            headers: new HttpHeaders({ 'X-API-KEY': apiKey})
+        };
+
+        console.log("ACADEMIA PROVIDER");
+        console.log(apiKey);
+
+        let data = {
+            subjectCode: subjectCode,
+            year: year,
+            ordinal: semester
+        };
+
+        return this.http.
+            post(url, data, httpOptions)
+            .pipe(map((d : any) => {
+                d = d.map(d => {
+                    let teacher = d.course.teacher;
+                    return  { code: d.course.subject.code,
+                              name: d.course.subject.name,
+                              year: d.course.year,
+                              semester: d.course.ordinal,
+                              average: d.average,
+                              stddev: d.stddev,
+                              aproved: d.aproved,
+                              reproved: d.reproved,
+                              total: d.aproved + d.reproved,
+                              teacherName: `${teacher.firstName} ${teacher.lastName}` }});
+
+                return d;
+
+            }));
+    }
+
+    teacher_courses_stats(rut: string, apiKey: string) {
+        let url = this.backendUrl + `courses/teachers/${rut}/stats`;
+        let httpOptions = {
+            headers: new HttpHeaders({ 'X-API-KEY': apiKey})
+        };
+
+        return this.http
+            .get<Course[]>(url, httpOptions)
+            .pipe(map((d: any) => {
+                d = d.map(d => {
+                    let teacher = d.course.teacher;
+                    return  { code: d.course.subject.code,
+                              name: d.course.subject.name,
+                              year: d.course.year,
+                              semester: d.course.ordinal,
+                              average: d.average,
+                              stddev: d.stddev,
+                              aproved: d.aproved,
+                              reproved: d.reproved,
+                              total: d.aproved + d.reproved,
+                              teacherName: `${teacher.firstName} ${teacher.lastName}` }});
+
+                return d;
+            }))
+    }
+
+    getTeacher(rut: string, apiKey: string) {
+        let url = this.backendUrl + `teachers/${rut}`;
+        let httpOptions = {
+            headers: new HttpHeaders({ 'X-API-KEY': apiKey})
+        };
+
+        return this.http.get(url, httpOptions);
     }
 }

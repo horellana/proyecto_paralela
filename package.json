@@ -26,6 +26,7 @@
         "@ionic/app-scripts": "3.2.1",
         "@ionic/storage": "2.2.0",
         "body-parser": "^1.18.3",
+        "chart.js": "^2.7.3",
         "cors": "^2.8.5",
         "express": "^4.16.4",
         "ionic-angular": "3.9.2",
@@ -36,6 +37,8 @@
         "typescript": "~2.6.2",
         "zone.js": "0.8.26"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "@ionic/lab": "1.0.18"
+    },
     "description": "An Ionic project"
 }

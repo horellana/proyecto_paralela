@@ -76,7 +76,7 @@ export class MenuPage {
     ionViewWillEnter() {
         if (this.loginProvider.user.role === "Docente") {
             this.pages = this.docentePages;
-            this.nav.setRoot(HomeDocentePage);
+            this.nav.setRoot(ListadoDocentesPage);
         }
         else {
             this.pages = this.alumnoPages;
