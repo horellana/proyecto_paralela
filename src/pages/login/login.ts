@@ -3,13 +3,9 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { RecuperarContraseAPage } from '../recuperar-contrase-a/recuperar-contrase-a';
-
 import { MenuPage } from '../menu/menu';
-
 import { FormBuilder, Validators } from '@angular/forms';
-
 import { LoginProvider } from '../../providers/login/login';
-
 import { AcademiaProvider } from '../../providers/academia/academia';
 
 @Component({
@@ -58,7 +54,7 @@ export class LoginPage {
     onLoginError(error) {
         console.log(error);
 
-        let message = error.status === 404
+        let message = error.status === 404 || (error.error.message == "")
             ? error.message
             : error.error.message;
 

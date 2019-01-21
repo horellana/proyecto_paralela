@@ -12,11 +12,17 @@
     <ion-list id="menu-list1">
       <div *ngFor="let page of pages">
         <ion-item color="none" menuClose="" (click)="goToPage(page)">
+          <ion-icon name="{{page.icon}}">
+          </ion-icon>
+
           {{ page.title }}
         </ion-item>
+
       </div>
 
       <ion-item color="none" menuClose="" (click)="logout()">
+        <ion-icon name="ios-key">
+        </ion-icon>
         Cerrar sesion
       </ion-item>
     </ion-list>

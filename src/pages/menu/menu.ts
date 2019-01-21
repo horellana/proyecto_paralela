@@ -32,15 +32,15 @@ export class MenuPage {
     docentePages : [any] = [
         { title: "Home",
           page: HomeDocentePage,
-          icon: "ios-home-outline" },
+          icon: "ios-home" },
 
         { title: "Avisos Profesor",
           page: AvisosProfesorPage,
-          icon: "" },
+          icon: "ios-paper" },
 
         { title: "Listado Profesores",
           page: ListadoDocentesPage,
-          icon: "" }
+          icon: "ios-list-box" }
     ];
 
     alumnoPages : [any] = [
