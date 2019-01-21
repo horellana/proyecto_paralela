@@ -12,8 +12,6 @@ import { HomeDocentePage } from '../pages/home-docente/home-docente';
 import { ListadoDocentesPage } from '../pages/listado-docentes/listado-docentes';
 import { GraficoCursoPage } from '../pages/grafico-curso/grafico-curso';
 
-
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -39,9 +37,7 @@ import { AcademiaProvider } from '../providers/academia/academia';
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(MyApp, {
-            iconMode: 'ios'
-        }),
+        IonicModule.forRoot(MyApp),
         HttpClientModule
     ],
     bootstrap: [IonicApp],
