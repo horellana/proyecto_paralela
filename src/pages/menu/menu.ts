@@ -36,7 +36,7 @@ export class MenuPage {
 
         { title: "Avisos Profesor",
           page: AvisosProfesorPage,
-          icon: "ios-paper" },
+          icon: "ios-paper-plane" },
 
         { title: "Listado Profesores",
           page: ListadoDocentesPage,
@@ -54,7 +54,7 @@ export class MenuPage {
 
         { title: "Grafico Curso",
           page: GraficoCursoPage,
-          icon: "" }
+          icon: "ios-podium" }
     ];
 
     constructor(
