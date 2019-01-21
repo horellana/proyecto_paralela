@@ -1,28 +1,32 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="list">
+      </ion-icon>
     </button>
-    <ion-title>
-      Principal
-    </ion-title>
-  </ion-navbar>
+
+        <ion-title>Home</ion-title>
+    </ion-navbar>
 </ion-header>
-<ion-content padding id="page1">
-  <div id="principal-markdown2" class="show-list-numbers-and-dots">
-    <p style="color:#000000;">
-      Ramos: XX
-    </p>
-  </div>
-  <img src="assets/img/lJ3GJdOoQOiLSvYjmSZ2_image.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-  <ion-list id="principal-list4">
-    <ion-item color="none" id="principal-list-item4">
-      <ion-icon name="arrow-dropdown" item-left></ion-icon>
-      Aprobacion: 73%
-    </ion-item>
-    <ion-item color="none" id="principal-list-item5">
-      <ion-icon name="close-circle" item-left></ion-icon>
-      Reprobacion: 27%
-    </ion-item>
-  </ion-list>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <label>
+        {{ nombreEstudiante}}
+      </label>
+        </ion-item>
+
+        <ion-item>
+            Ramos tomados: {{ ramosTomados }}
+        </ion-item>
+
+        <ion-item>
+            Promedio cursados: {{ promedioRamos }}
+        </ion-item>
+    </ion-list>
+
+    <canvas id="canvas">
+  </canvas>
 </ion-content>

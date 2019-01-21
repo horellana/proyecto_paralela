@@ -7,13 +7,6 @@ import { Chart } from 'chart.js';
 import { LoginProvider } from '../../providers/login/login';
 
 
-/**
- * Generated class for the HomeDocentePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
     selector: 'page-home-docente',
