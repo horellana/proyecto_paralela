@@ -5,9 +5,7 @@ import { AlertController } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
 import { LoginProvider } from '../../providers/login/login';
-import { Student } from '../../models/student';
 import { AcademiaProvider } from '../../providers/academia/academia';
-
 
 @IonicPage()
 @Component({

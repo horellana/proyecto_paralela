@@ -36,9 +36,11 @@ export class MenuPage {
             icon: "ios-home"
         },
 
-        // { title: "Avisos Profesor",
-        //   page: AvisosProfesorPage,
-        //   icon: "ios-paper-plane" },
+        {
+            title: "Avisos Profesor",
+            page: AvisosProfesorPage,
+            icon: "ios-paper-plane"
+        },
 
         {
             title: "Listado Profesores",
