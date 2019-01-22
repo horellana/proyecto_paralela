@@ -36,20 +36,19 @@ export class ListadoDocentesPage {
     teacherName = null;
 
     constructor(public navCtrl: NavController,
-                public navParams: NavParams,
-                public alertCtrl: AlertController,
-                public loadingCtrl: LoadingController,
-                public loginProvider: LoginProvider,
-                public academiaProvider: AcademiaProvider)
-    {
+        public navParams: NavParams,
+        public alertCtrl: AlertController,
+        public loadingCtrl: LoadingController,
+        public loginProvider: LoginProvider,
+        public academiaProvider: AcademiaProvider) {
     }
 
     ionViewDidLoad() {
         this.academiaProvider
             .teacher_courses_stats(this.loginProvider.user.rut,
-                                   this.loginProvider.user.apiKey)
-            .subscribe(data => { this.handleData(data)},
-                       error => { this.failedDataLoadAlert(error).present(); }
+            this.loginProvider.user.apiKey)
+            .subscribe(data => { this.handleData(data) },
+            error => { this.failedDataLoadAlert(error).present(); }
             );
 
         this.academiaProvider
@@ -78,7 +77,7 @@ export class ListadoDocentesPage {
         this.shownCourses = [];
 
         let apiKey = this.loginProvider.user.apiKey;
-        let courseData = this.data.filter(c => c.name ==  this.course)[0];
+        let courseData = this.data.filter(c => c.name == this.course)[0];
 
         console.log(this.loginProvider.user);
         console.log(apiKey);
@@ -97,8 +96,10 @@ export class ListadoDocentesPage {
     }
 
     failedDataLoadAlert(message) {
-        return this.alertCtrl.create({title: 'Error',
-                                      subTitle: message});
+        return this.alertCtrl.create({
+            title: 'Error',
+            subTitle: message
+        });
     }
 
     uniques(data: any[]) {
