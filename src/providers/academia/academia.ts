@@ -105,4 +105,14 @@ export class AcademiaProvider {
 
         return this.http.get(url, httpOptions);
     }
+
+    student_courses_stats(rut: string, apiKey: string) {
+        let url = this.backendUrl + `courses/students/${rut}`;
+
+        let httpOptions = {
+            headers: new HttpHeaders({ 'X-API-KEY': apiKey})
+        };
+
+        return this.http.get(url, httpOptions);
+    }
 }
