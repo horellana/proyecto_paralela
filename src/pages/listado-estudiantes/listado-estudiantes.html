@@ -8,126 +8,26 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding id="page2">
+  <h1>
+    Historico
+  </h1>
+
   <form id="listadoEstudiantes-form4">
     <ion-item id="listadoEstudiantes-select1">
       <ion-label>
         Ramo
       </ion-label>
       <ion-select name="">
-        <ion-option>
-          Paralela
-        </ion-option>
-        <ion-option>
-          Calculo
-        </ion-option>
-        <ion-option>
-          Algebra
+        <ion-option *ngFor="let course of courses; let i = index" [selected]="i == 0">
+          {{ course.course.subject.name }}
         </ion-option>
       </ion-select>
     </ion-item>
   </form>
-  <button id="listadoEstudiantes-button12" ion-button color="light" style="font-size:12px;">
-    Nombre
-  </button>
-  <button id="listadoEstudiantes-button13" ion-button color="light" style="font-size:12px;">
-    Promedio
-  </button>
-  <button id="listadoEstudiantes-button16" ion-button color="light" style="font-size:12px;">
-    Mediana
-  </button>
-  <button id="listadoEstudiantes-button14" ion-button color="light" style="font-size:12px;">
-    Stdev
-  </button>
-  <div class="spacer" style="width:300px;height:8.00001px;" id="listadoEstudiantes-spacer3"></div>
-  <button id="listadoEstudiantes-button6" ion-button color="light" style="font-size:12px;">
-    Nicolas ataoro
-  </button>
-  <button id="listadoEstudiantes-button29" ion-button outline color="positive" style="font-weight:300;">
-    4,4
-  </button>
-  <button id="listadoEstudiantes-button11" ion-button outline color="positive" style="font-weight:300;">
-    5.5
-  </button>
-  <button id="listadoEstudiantes-button32" ion-button outline color="positive" style="font-weight:300;">
-    3.3
-  </button>
-  <div class="spacer" style="width:300px;height:8.00001px;" id="listadoEstudiantes-spacer4"></div>
-  <button id="listadoEstudiantes-button18" ion-button color="light" style="font-size:12px;">
-    Noooooooooo
-  </button>
-  <button id="listadoEstudiantes-button8" ion-button outline color="assertive" style="font-weight:300;">
-    3.1
-  </button>
-  <button id="listadoEstudiantes-button31" ion-button outline color="positive" style="font-weight:300;">
-    5.5
-  </button>
-  <button id="listadoEstudiantes-button30" ion-button outline color="positive" style="font-weight:300;">
-    3.3
-  </button>
-  <div class="spacer" style="width:300px;height:8.00001px;" id="listadoEstudiantes-spacer5"></div>
-  <button id="listadoEstudiantes-button17" ion-button color="light" style="font-size:12px;">
-    Eeeeeeeeeeee
-  </button>
-  <button id="listadoEstudiantes-button26" ion-button outline color="positive" style="font-weight:300;">
-    6.2
-  </button>
-  <button id="listadoEstudiantes-button34" ion-button outline color="positive" style="font-weight:300;">
-    5.5
-  </button>
-  <button id="listadoEstudiantes-button33" ion-button outline color="positive" style="font-weight:300;">
-    3.3
-  </button>
-  <div class="spacer" style="width:300px;height:8.00001px;" id="listadoEstudiantes-spacer7"></div>
-  <button id="listadoEstudiantes-button20" ion-button color="light" style="font-size:12px;">
-    Ooooooooooe
-  </button>
-  <button id="listadoEstudiantes-button27" ion-button outline color="positive" style="font-weight:300;">
-    6.3
-  </button>
-  <button id="listadoEstudiantes-button36" ion-button outline color="positive" style="font-weight:300;">
-    5.5
-  </button>
-  <button id="listadoEstudiantes-button35" ion-button outline color="positive" style="font-weight:300;">
-    3.3
-  </button>
-  <div class="spacer" style="width:300px;height:8.00001px;" id="listadoEstudiantes-spacer8"></div>
-  <button id="listadoEstudiantes-button21" ion-button color="light" style="font-size:12px;">
-    Naaaaaaaaae
-  </button>
-  <button id="listadoEstudiantes-button10" ion-button outline color="positive" style="font-weight:300;">
-    5.3
-  </button>
-  <button id="listadoEstudiantes-button38" ion-button outline color="positive" style="font-weight:300;">
-    5.5
-  </button>
-  <button id="listadoEstudiantes-button37" ion-button outline color="positive" style="font-weight:300;">
-    3.3
-  </button>
-  <div class="spacer" style="width:300px;height:8.00001px;" id="listadoEstudiantes-spacer9"></div>
-  <button id="listadoEstudiantes-button22" ion-button color="light" style="font-size:12px;">
-    Yaaaaaaaaaa
-  </button>
-  <button id="listadoEstudiantes-button25" ion-button outline color="positive" style="font-weight:300;">
-    4.6
-  </button>
-  <button id="listadoEstudiantes-button40" ion-button outline color="positive" style="font-weight:300;">
-    5.5
-  </button>
-  <button id="listadoEstudiantes-button39" ion-button outline color="positive" style="font-weight:300;">
-    3.3
-  </button>
-  <div class="spacer" style="width:300px;height:8.00001px;" id="listadoEstudiantes-spacer10"></div>
-  <button id="listadoEstudiantes-button23" ion-button color="light" style="font-size:12px;">
-    Uuuuuuuuuue
-  </button>
-  <button id="listadoEstudiantes-button28" ion-button outline color="positive" style="font-weight:300;">
-    4.9
-  </button>
-  <button id="listadoEstudiantes-button42" ion-button outline color="positive" style="font-weight:300;">
-    5.5
-  </button>
-  <button id="listadoEstudiantes-button41" ion-button outline color="positive" style="font-weight:300;">
-    3.3
-  </button>
-</ion-content>
+
+  <div>
+
+  </div>
+  </ion-content>

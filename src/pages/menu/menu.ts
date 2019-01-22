@@ -34,9 +34,9 @@ export class MenuPage {
           page: HomeDocentePage,
           icon: "ios-home" },
 
-        { title: "Avisos Profesor",
-          page: AvisosProfesorPage,
-          icon: "ios-paper-plane" },
+        // { title: "Avisos Profesor",
+        //   page: AvisosProfesorPage,
+        //   icon: "ios-paper-plane" },
 
         { title: "Listado Profesores",
           page: ListadoDocentesPage,
@@ -76,11 +76,11 @@ export class MenuPage {
     ionViewWillEnter() {
         if (this.loginProvider.user.role === "Docente") {
             this.pages = this.docentePages;
-            this.nav.setRoot(ListadoDocentesPage);
+            this.nav.setRoot(HomeDocentePage);
         }
         else {
             this.pages = this.alumnoPages;
-            this.nav.setRoot(HomeEstudiantePage);
+            this.nav.setRoot(ListadoEstudiantesPage);
         }
 
         console.log(this.pages);

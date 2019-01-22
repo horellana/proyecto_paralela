@@ -31,7 +31,7 @@ export class HomeDocentePage {
         console.log(loginProvider);
     }
 
-    ngOnInit() {
+    ionViewDidLoad() {
         let rut = this.loginProvider.user.rut;
         let url = `https://api.sebastian.cl/academia/api/v1/courses/teachers/${rut}/stats`;
         const httpOptions = {

@@ -29,7 +29,7 @@ export class HomeEstudiantePage {
         console.log(loginProvider);
     }
 
-    ngOnInit() {
+    ionViewDidLoad() {
         let rut = this.loginProvider.user.rut;
         let url = `https://api.sebastian.cl/academia/api/v1/courses/students/${rut}/stats`;
         const httpOptions = {
@@ -40,26 +40,26 @@ export class HomeEstudiantePage {
             .get(url, httpOptions)
             .subscribe(
                 (result: [any]) => {
-                    this.nombreEstudiante = result[0].course.student.firstName + ' ' + result[0].course.student.lastName;
-                    this.promedioRamos = this.   (result);
-                    this.ramosTomados = result.length;
+                    // this.nombreEstudiante = result[0].course.student.firstName + ' ' + result[0].course.student.lastName;
+                    // this.promedioRamos = this.   (result);
+                    // this.ramosTomados = result.length;
 
-                    let charData = this.   (result);
+                    // let charData = this.   (result);
 
-                    let canvas = document.   ("canvas");
-                    this.chart = new Chart(canvas, {
-                        type: 'pie',
-                        data: {
-                            datasets: [{
-                                data: charData,
-                                backgroundColor: [
-                                    'rgb(75, 192, 192)', // Verde
-                                    'rgb(255, 99, 132)' // Rojo
-                                ]
-                            }],
-                            labels: [ 'Aprobados', 'Reprobados']
-                        }
-                    });
+                    // let canvas = document.   ("canvas");
+                    // this.chart = new Chart(canvas, {
+                    //     type: 'pie',
+                    //     data: {
+                    //         datasets: [{
+                    //             data: charData,
+                    //             backgroundColor: [
+                    //                 'rgb(75, 192, 192)', // Verde
+                    //                 'rgb(255, 99, 132)' // Rojo
+                    //             ]
+                    //         }],
+                    //         labels: [ 'Aprobados', 'Reprobados']
+                    //     }
+                    // });
                 },
                 error => {
                     this.errorLoadingDataAlert().present()
@@ -74,4 +74,3 @@ export class HomeEstudiantePage {
                                        subTitle: "Error al cargar los datos"});
     }
 }
-
