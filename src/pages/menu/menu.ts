@@ -1,4 +1,4 @@
-import { Component,  ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav } from 'ionic-angular';
 
 import { LoginPage } from '../../pages/login/login';
@@ -27,44 +27,53 @@ import { AvisosProfesorPage } from '../../pages/avisos-profesor/avisos-profesor'
 export class MenuPage {
     @ViewChild(Nav) nav: Nav;
 
-    pages : [any] = null;
+    pages: [any] = null;
 
-    docentePages : [any] = [
-        { title: "Home",
-          page: HomeDocentePage,
-          icon: "ios-home" },
+    docentePages: [any] = [
+        {
+            title: "Home",
+            page: HomeDocentePage,
+            icon: "ios-home"
+        },
 
         // { title: "Avisos Profesor",
         //   page: AvisosProfesorPage,
         //   icon: "ios-paper-plane" },
 
-        { title: "Listado Profesores",
-          page: ListadoDocentesPage,
-          icon: "ios-list-box" }
+        {
+            title: "Listado Profesores",
+            page: ListadoDocentesPage,
+            icon: "ios-list-box"
+        }
     ];
 
-    alumnoPages : [any] = [
-        { title: "Home",
-          page: HomeEstudiantePage,
-          icon: "ios-home-outline" },
+    alumnoPages: [any] = [
+        {
+            title: "Home",
+            page: HomeEstudiantePage,
+            icon: "ios-home-outline"
+        },
 
-        { title: "Listado Estudiantes",
-          page: ListadoEstudiantesPage,
-          icon: "ios-list-box-outline" },
+        {
+            title: "Listado Estudiantes",
+            page: ListadoEstudiantesPage,
+            icon: "ios-list-box-outline"
+        },
 
-        { title: "Grafico Curso",
-          page: GraficoCursoPage,
-          icon: "ios-podium" }
+        {
+            title: "Grafico Curso",
+            page: GraficoCursoPage,
+            icon: "ios-podium"
+        }
     ];
 
     constructor(
         public loginProvider: LoginProvider,
         public navCtrl: NavController
-    )
-    {
+    ) {
     }
 
-    goToPage(page : any) {
+    goToPage(page: any) {
         console.log("going to" + page);
         this.nav.setRoot(page.page);
     }
@@ -80,7 +89,7 @@ export class MenuPage {
         }
         else {
             this.pages = this.alumnoPages;
-            this.nav.setRoot(ListadoEstudiantesPage);
+            this.nav.setRoot(HomeEstudiantePage);
         }
 
         console.log(this.pages);

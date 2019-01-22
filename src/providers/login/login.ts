@@ -35,7 +35,6 @@ export class LoginProvider {
                 this.user.rut = data.rut;
                 this.user.role = data.role;
                 this.user.apiKey = data.apiKey;
-
                 console.log("====== From login provider ======");
                 console.log(this.user);
                 console.log("====== Login provider done ====== ")
