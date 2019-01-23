@@ -18,6 +18,7 @@ export class HomeEstudiantePage {
     datos = [];
     promedioRamos: number;
     ramosTomados: number;
+    ranking: number;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -32,8 +33,17 @@ export class HomeEstudiantePage {
     ionViewDidLoad() {
         let rut = this.loginProvider.user.rut;
         let url = `https://api.sebastian.cl/academia/api/v1/courses/students/${rut}/`;
+        let apiKey = this.loginProvider.user.apiKey;
+
+        this.academiaProvider.rankingStudent(rut, apiKey).subscribe(
+            (data: any) => {
+                this.ranking = data.position;
+            },
+            error => {
+            });
+
         const httpOptions = {
-            headers: new HttpHeaders({ 'X-API-KEY': this.loginProvider.user.apiKey })
+            headers: new HttpHeaders({ 'X-API-KEY': apiKey })
         };
 
         this.httpClient

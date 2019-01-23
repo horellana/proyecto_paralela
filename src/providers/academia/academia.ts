@@ -148,14 +148,12 @@ export class AcademiaProvider {
 
     //Estadisticos alumno
 
-    // rankingStudent(rut: string, apiKey: string) {
-    //     let url = this.backendUrl + `rankings/${rut}/stats`;
-    //     let httpOptions = {
-    //         headers: new HttpHeaders({ 'X-API-KEY': apiKey })
-    //     };
-    //     return this.http.get(url, httpOptions).subscribe((data: any) => {
-    //     },
-    //         error => { }
-    //     );
-    // }
+    rankingStudent(rut: string, apiKey: string) {
+        let url = this.backendUrl + `rankings/${rut}`;
+        let httpOptions = {
+            headers: new HttpHeaders({ 'X-API-KEY': apiKey })
+        };
+
+        return this.http.get(url, httpOptions)
+    }
 }
