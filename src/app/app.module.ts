@@ -24,15 +24,15 @@ import { AcademiaProvider } from '../providers/academia/academia';
 @NgModule({
     declarations: [
         MyApp,
-        HomeEstudiantePage,
+        // HomeEstudiantePage,
         ListadoEstudiantesPage,
         CloudPage,
         LoginPage,
         RecuperarContraseAPage,
         AvisosProfesorPage,
-        HomeDocentePage,
-        MenuPage,
-        ListadoDocentesPage,
+        // HomeDocentePage,
+        // MenuPage,
+        // ListadoDocentesPage,
         GraficoCursoPage
     ],
     imports: [
@@ -57,9 +57,9 @@ import { AcademiaProvider } from '../providers/academia/academia';
     providers: [
         StatusBar,
         SplashScreen,
-        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
         LoginProvider,
         AcademiaProvider,
     ]
 })
-export class AppModule {}
+export class AppModule { }
