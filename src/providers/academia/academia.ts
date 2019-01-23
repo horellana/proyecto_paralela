@@ -50,6 +50,7 @@ export class AcademiaProvider {
                 d = d.map(d => {
                     let teacher = d.course.teacher;
                     return {
+                        uniqueCode: d.course.code,
                         code: d.course.subject.code,
                         name: d.course.subject.name,
                         year: d.course.year,
@@ -59,7 +60,8 @@ export class AcademiaProvider {
                         aproved: d.aproved,
                         reproved: d.reproved,
                         total: d.aproved + d.reproved,
-                        teacherName: `${teacher.firstName} ${teacher.lastName}`
+                        teacherName: `${teacher.firstName} ${teacher.lastName}`,
+                        teacherRut: teacher.rut
                     }
                 });
                 return d;
@@ -92,32 +94,6 @@ export class AcademiaProvider {
                 return d;
             }))
     }
-
-    //
-    // student_courses_stats(rut: string, apiKey: string) {
-    //     let url = this.backendUrl + `courses/students/${rut}/stats`;
-    //     let httpOptions = {
-    //         headers: new HttpHeaders({ 'X-API-KEY': apiKey})
-    //     };
-    //     return this.http
-    //         .get<Course[]>(url, httpOptions)
-    //         .pipe(map((e: any) => {
-    //             e = e.map(e => {
-    //                 let student = e.course.student;
-    //                 return  { code: e.course.subject.code,
-    //                           name: e.course.subject.name,
-    //                           year: e.course.year,
-    //                           semester: e.course.ordinal,
-    //                           average: e.average,
-    //                           stddev: e.stddev,
-    //                           aproved: e.aproved,
-    //                           reproved: e.reproved,
-    //                           total: e.aproved + e.reproved,
-    //                           teacherName: `${student.firstName} ${student.lastName}` }});
-    //             return e;
-    //         }))
-    // }
-
 
     getTeacher(rut: string, apiKey: string) {
         let url = this.backendUrl + `teachers/${rut}`;
