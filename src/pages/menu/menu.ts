@@ -91,7 +91,7 @@ export class MenuPage {
         }
         else {
             this.pages = this.alumnoPages;
-            this.nav.setRoot(HomeEstudiantePage);
+            this.nav.setRoot(GraficoCursoPage);
         }
 
         console.log(this.pages);
