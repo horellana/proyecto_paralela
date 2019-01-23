@@ -24,16 +24,17 @@ import { AcademiaProvider } from '../providers/academia/academia';
 @NgModule({
     declarations: [
         MyApp,
-        // HomeEstudiantePage,
         ListadoEstudiantesPage,
         CloudPage,
         LoginPage,
         RecuperarContraseAPage,
         AvisosProfesorPage,
-        // HomeDocentePage,
-        // MenuPage,
-        // ListadoDocentesPage,
-        GraficoCursoPage
+        GraficoCursoPage,
+
+        HomeDocentePage,
+        MenuPage,
+        ListadoDocentesPage,
+        HomeEstudiantePage
     ],
     imports: [
         BrowserModule,

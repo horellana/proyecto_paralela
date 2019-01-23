@@ -49,14 +49,17 @@ export class GraficoCursoPage {
                 console.log(result);
                 console.log("-------------------------------------------------------");
 
-                this.courses = result.map(c => {
-                    return {
-                        year: c.course.year,
-                        grade: c.grade,
-                        code: c.course.subject.code,
-                        ordinal: c.course.ordinal,
-                    }
-                });
+                this.courses = result
+                    .map(c => {
+                        return {
+                            year: c.course.year,
+                            grade: c.grade,
+                            code: c.course.subject.code,
+                            ordinal: c.course.ordinal,
+                        }
+                    })
+                    .sort((a, b) => a.year - b.year);
+
                 this.years = this.uniques(this.courses.map(c => c.year));
                 console.log("Años");
                 console.log(this.years);
@@ -92,7 +95,8 @@ export class GraficoCursoPage {
 
         forkJoin(requests).subscribe(
             result => {
-                result = [].concat.apply([], result);
+                result = [].concat.apply([], result)
+                    .sort((a, b) => a.year - b.year);
 
                 console.log("RESSSSSUUUUUUULT");
                 console.log(result);
