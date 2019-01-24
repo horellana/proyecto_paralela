@@ -2,16 +2,12 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController, LoadingController } from 'ionic-angular';
 
-import { catchError, tap } from 'rxjs/operators';
-
 import { LoginProvider } from '../../providers/login/login';
 import { AcademiaProvider } from '../../providers/academia/academia';
 
 import { Teacher } from '../../models/teacher';
 
 import { forkJoin } from "rxjs/observable/forkJoin";
-import { mergeMap } from "rxjs/observable/mergeMap";
-import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the ListadoDocentesPage page.

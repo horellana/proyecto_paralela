@@ -40,9 +40,11 @@ export class LoginPage {
         this.academiaProvider.setBackendUrl(this.loginForm.value.backendUrl);
 
         this.loginProvider
-            .tryLogin(this.loginForm.value.rut,
+            .tryLogin(
+            this.loginForm.value.rut,
             this.loginForm.value.password,
-            this.academiaProvider.backendUrl)
+            this.academiaProvider.backendUrl
+            )
             .subscribe(this.onLogin,
             this.onLoginError);
     }

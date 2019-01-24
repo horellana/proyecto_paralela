@@ -8,7 +8,7 @@ import { AcademiaProvider } from '../../providers/academia/academia';
 
 import { Chart } from 'chart.js';
 
-import { AlertController, LoadingController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 
 @Component({
