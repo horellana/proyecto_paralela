@@ -13,7 +13,7 @@ import { Course } from '../../models/course';
 
 @Injectable()
 export class AcademiaProvider {
-    backendUrl = "https://api.sebastian.cl/academia/api/v1/"
+    backendUrl = "https://api.sebastian.cl/academia/api/v1/";
 
     constructor(public http: HttpClient) {
     }
@@ -22,6 +22,9 @@ export class AcademiaProvider {
         if (newUrl[newUrl.length - 1] != '/') {
             newUrl = newUrl + '/';
         }
+
+        console.log(`New backend url: ${newUrl}`);
+
         this.backendUrl = newUrl;
     }
 
