@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Option } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 
@@ -62,9 +62,24 @@ export class HomeEstudiantePage {
                             backgroundColor: [
                                 'rgb(75, 192, 192)', // Verde
                                 'rgb(255, 99, 132)' // Rojo
-                            ]
+                            ],
                         }],
-                        labels: ['Aprobados', 'Reprobados']
+                        labels: ['Aprobados', 'Reprobados'],
+                    },
+                    options:{
+                        legend:{
+                            display:true,
+                            position:'down'
+                        },
+                        title:{
+                            display:true,
+                            text:'Grafico Aprobados vs Reprovados',
+                            fontSize:15
+                        },
+                        labels: {
+                            render: 'percentage',
+                            precision: 2
+                        }   
                     }
                 });
             },
