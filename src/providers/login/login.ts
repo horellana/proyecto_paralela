@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 */
 @Injectable()
 export class LoginProvider {
-    user : any = {
+    user: any = {
         rut: null,
         role: null,
         apiKey: null
@@ -25,19 +25,16 @@ export class LoginProvider {
         return this.user.role != null;
     }
 
-    tryLogin(rut: string, password: string, backend : string) {
+    tryLogin(rut: string, password: string, backend: string) {
         let url = backend + this.loginUrl;
         let data = { rut: rut, password: password };
 
         return this.httpClient
             .post(url, data)
-            .pipe(tap((data : any) => {
+            .pipe(tap((data: any) => {
                 this.user.rut = data.rut;
                 this.user.role = data.role;
                 this.user.apiKey = data.apiKey;
-                console.log("====== From login provider ======");
-                console.log(this.user);
-                console.log("====== Login provider done ====== ")
             }));
     }
 }

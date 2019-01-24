@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController, LoadingController } from 'ionic-angular';
 
-// import { catchError, map, tap, flatMap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { LoginProvider } from '../../providers/login/login';
 import { AcademiaProvider } from '../../providers/academia/academia';
@@ -10,6 +10,8 @@ import { AcademiaProvider } from '../../providers/academia/academia';
 import { Teacher } from '../../models/teacher';
 
 import { forkJoin } from "rxjs/observable/forkJoin";
+import { mergeMap } from "rxjs/observable/mergeMap";
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the ListadoDocentesPage page.
@@ -44,10 +46,14 @@ export class ListadoDocentesPage {
     }
 
     ionViewDidLoad() {
+        let rut = this.loginProvider.user.rut
+        let apiKey = this.loginProvider.user.apiKey
+
         this.academiaProvider
-            .teacher_courses_stats(this.loginProvider.user.rut,
-            this.loginProvider.user.apiKey)
-            .subscribe(data => { this.handleData(data) },
+            .teacher_courses_stats(rut, apiKey)
+            .subscribe
+            (
+            data => { this.handleData(data) },
             error => { this.failedDataLoadAlert(error).present(); }
             );
 
@@ -79,16 +85,26 @@ export class ListadoDocentesPage {
         let apiKey = this.loginProvider.user.apiKey;
         let courseData = this.data.filter(c => c.name == this.course)[0];
 
-        console.log(this.loginProvider.user);
-        console.log(apiKey);
+        console.log(this.data);
+        console.log(courseData);
 
         let requests = this.data
             .filter(c => c.name == this.course)
-            .map(c => this.academiaProvider.course_stats(courseData.code, c.year, c.semester, apiKey))
+            .map(c => this
+                .academiaProvider
+                .course_stats(c.code, c.year, c.semester, apiKey)
+            );
+
 
         forkJoin(requests).subscribe(
             (result) => {
                 this.shownCourses = [].concat.apply([], result);
+                loader.dismiss();
+            },
+
+            (error) => {
+                console.log(error);
+                this.failedDataLoadAlert(error.error.message).present();
                 loader.dismiss();
             }
         );

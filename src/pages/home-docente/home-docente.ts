@@ -23,54 +23,52 @@ export class HomeDocentePage {
     ramosImpartidos: number;
 
     constructor(public navCtrl: NavController,
-                public navParams: NavParams,
-                public httpClient: HttpClient,
-                public alertCtrl: AlertController,
-                public loginProvider: LoginProvider) {
-
-        console.log(loginProvider);
+        public navParams: NavParams,
+        public httpClient: HttpClient,
+        public alertCtrl: AlertController,
+        public loginProvider: LoginProvider) {
     }
 
     ionViewDidLoad() {
         let rut = this.loginProvider.user.rut;
         let url = `https://api.sebastian.cl/academia/api/v1/courses/teachers/${rut}/stats`;
         const httpOptions = {
-            headers: new HttpHeaders({ 'X-API-KEY': this.loginProvider.user.apiKey})
+            headers: new HttpHeaders({ 'X-API-KEY': this.loginProvider.user.apiKey })
         };
 
         this.httpClient
             .get(url, httpOptions)
             .subscribe(
-                (result: [any]) => {
-                    this.nombreDocente = result[0].course.teacher.firstName + ' ' + result[0].course.teacher.lastName;
-                    this.promedioCursos = this.calculateAvg(result);
-                    this.ramosImpartidos = result.length;
+            (result: [any]) => {
+                this.nombreDocente = result[0].course.teacher.firstName + ' ' + result[0].course.teacher.lastName;
+                this.promedioCursos = this.calculateAvg(result);
+                this.ramosImpartidos = result.length;
 
-                    let charData = this.calculateGraphData(result);
+                let charData = this.calculateGraphData(result);
 
-                    let canvas = document.getElementById("canvas");
-                    this.chart = new Chart(canvas, {
-                        type: 'pie',
-                        data: {
-                            datasets: [{
-                                data: charData,
-                                backgroundColor: [
-                                    'rgb(75, 192, 192)', // Verde
-                                    'rgb(255, 99, 132)' // Rojo
-                                ]
-                            }],
-                            labels: [ 'Aprobados', 'Reprobados']
-                        }
-                    });
-                },
-                error => {
-                    this.errorLoadingDataAlert().present()
-                }
+                let canvas = document.getElementById("canvas");
+                this.chart = new Chart(canvas, {
+                    type: 'pie',
+                    data: {
+                        datasets: [{
+                            data: charData,
+                            backgroundColor: [
+                                'rgb(75, 192, 192)', // Verde
+                                'rgb(255, 99, 132)' // Rojo
+                            ]
+                        }],
+                        labels: ['Aprobados', 'Reprobados']
+                    }
+                });
+            },
+            error => {
+                this.errorLoadingDataAlert().present()
+            }
             );
     }
 
-    calculateAvg(data : [any]) {
-        let avg : number = 0;
+    calculateAvg(data: [any]) {
+        let avg: number = 0;
 
         data.forEach(course => {
             avg = avg + course.average;
@@ -81,7 +79,7 @@ export class HomeDocentePage {
         return Math.round(avg * 100) / 100;
     }
 
-    calculateGraphData(data : [any]) {
+    calculateGraphData(data: [any]) {
         let aproved = 0;
         let reproved = 0;
 
@@ -94,7 +92,9 @@ export class HomeDocentePage {
     }
 
     errorLoadingDataAlert() {
-        return this.alertCtrl.create({ title: "Error",
-                                       subTitle: "Error al cargar los datos"});
+        return this.alertCtrl.create({
+            title: "Error",
+            subTitle: "Error al cargar los datos"
+        });
     }
 }

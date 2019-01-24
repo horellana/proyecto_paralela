@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { Course } from '../../models/course';
-import { Student } from '../../models/student';
 
 /*
   Generated class for the AcademiaProvider provider.
@@ -15,12 +14,11 @@ import { Student } from '../../models/student';
 @Injectable()
 export class AcademiaProvider {
     backendUrl = "https://api.sebastian.cl/academia/api/v1/"
+
     constructor(public http: HttpClient) {
-        console.log('Hello AcademiaProvider Provider');
     }
 
     setBackendUrl(newUrl) {
-        console.log("newUrl = " + newUrl);
         if (newUrl[newUrl.length - 1] != '/') {
             newUrl = newUrl + '/';
         }
@@ -37,8 +35,6 @@ export class AcademiaProvider {
         let httpOptions = {
             headers: new HttpHeaders({ 'X-API-KEY': apiKey })
         };
-        console.log("ACADEMIA PROVIDER");
-        console.log(apiKey);
         let data = {
             subjectCode: subjectCode,
             year: year,

@@ -76,7 +76,6 @@ export class MenuPage {
     }
 
     goToPage(page: any) {
-        console.log("going to" + page);
         this.nav.setRoot(page.page);
     }
 
@@ -93,7 +92,5 @@ export class MenuPage {
             this.pages = this.alumnoPages;
             this.nav.setRoot(HomeEstudiantePage);
         }
-
-        console.log(this.pages);
     }
 }

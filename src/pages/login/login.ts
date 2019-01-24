@@ -16,10 +16,10 @@ export class LoginPage {
     loginForm: any;
 
     constructor(public navCtrl: NavController,
-                public formBuilder: FormBuilder,
-                public alertCtrl: AlertController,
-                public loginProvider: LoginProvider,
-                public academiaProvider: AcademiaProvider) {
+        public formBuilder: FormBuilder,
+        public alertCtrl: AlertController,
+        public loginProvider: LoginProvider,
+        public academiaProvider: AcademiaProvider) {
 
         this.loginForm = this.formBuilder.group({
             rut: ['', Validators.required],
@@ -41,10 +41,10 @@ export class LoginPage {
 
         this.loginProvider
             .tryLogin(this.loginForm.value.rut,
-                      this.loginForm.value.password,
-                      this.academiaProvider.backendUrl)
+            this.loginForm.value.password,
+            this.academiaProvider.backendUrl)
             .subscribe(this.onLogin,
-                       this.onLoginError);
+            this.onLoginError);
     }
 
     onLogin(result) {
@@ -52,28 +52,28 @@ export class LoginPage {
     }
 
     onLoginError(error) {
-        console.log(error);
-
         let message = error.status === 404 || (error.error.message == "")
             ? error.message
             : error.error.message;
-
 
         this.invalidDataAlert(message).present()
     }
 
     forgotPassword() {
-        console.log("Recuperar contraseña");
         this.navCtrl.push(RecuperarContraseAPage);
     }
 
     missingDataAlert() {
-        return this.alertCtrl.create({title: 'Error',
-                                      subTitle: 'Por favor ingresa todos los datos'});
+        return this.alertCtrl.create({
+            title: 'Error',
+            subTitle: 'Por favor ingresa todos los datos'
+        });
     }
 
     invalidDataAlert(message) {
-        return this.alertCtrl.create({title: 'Error',
-                                      subTitle: message});
+        return this.alertCtrl.create({
+            title: 'Error',
+            subTitle: message
+        });
     }
 }

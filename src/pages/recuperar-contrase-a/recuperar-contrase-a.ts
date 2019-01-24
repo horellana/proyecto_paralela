@@ -10,32 +10,30 @@ import { AcademiaProvider } from '../../providers/academia/academia';
     templateUrl: 'recuperar-contrase-a.html'
 })
 export class RecuperarContraseAPage {
-    rut : string = "";
+    rut: string = "";
 
 
     constructor(public navCtrl: NavController,
-                public alertCtrl: AlertController,
-                public academiaProvider: AcademiaProvider) {
+        public alertCtrl: AlertController,
+        public academiaProvider: AcademiaProvider) {
     }
 
     recuperar() {
         this.academiaProvider
             .forgotPassword(this.rut)
             .subscribe(
-                ok => {
-                    console.log(ok);
-                    this.alertCtrl
-                        .create({title: 'Ok', subTitle: 'Se envio un mail'})
-                        .present();
+            ok => {
+                this.alertCtrl
+                    .create({ title: 'Ok', subTitle: 'Se envio un mail' })
+                    .present();
 
-                    this.navCtrl.pop();
-                },
-                error => {
-                    console.log(error);
-                    this.alertCtrl
-                        .create({title: 'Error', subTitle: error.error.message})
-                        .present();
-                }
+                this.navCtrl.pop();
+            },
+            error => {
+                this.alertCtrl
+                    .create({ title: 'Error', subTitle: error.error.message })
+                    .present();
+            }
             );
     }
 }

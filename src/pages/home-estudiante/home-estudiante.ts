@@ -26,8 +26,6 @@ export class HomeEstudiantePage {
         public alertCtrl: AlertController,
         public loginProvider: LoginProvider,
         public academiaProvider: AcademiaProvider) {
-
-        console.log(loginProvider);
     }
 
     ionViewDidLoad() {
@@ -55,10 +53,6 @@ export class HomeEstudiantePage {
                 this.ramosTomados = result.length;
                 let charData = this.calculateGraphData(result);
                 let canvas = document.getElementById("canvas");
-
-                console.log(this.promedioRamos);
-                console.log(this.ramosTomados);
-                console.log(charData);
 
                 this.chart = new Chart(canvas, {
                     type: 'pie',

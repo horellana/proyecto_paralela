@@ -8,11 +8,15 @@ import { AcademiaProvider } from '../../providers/academia/academia';
 
 import { Chart } from 'chart.js';
 
+import { AlertController, LoadingController } from 'ionic-angular';
+
+
 @Component({
     selector: 'page-grafico-curso',
     templateUrl: 'grafico-curso.html'
 })
 export class GraficoCursoPage {
+    chart = null;
     name: string = null;
 
     years = [];
@@ -20,7 +24,8 @@ export class GraficoCursoPage {
 
     constructor(public navCtrl: NavController,
         public academiaProvider: AcademiaProvider,
-        public loginProvider: LoginProvider) {
+        public loginProvider: LoginProvider,
+        public loadingCtrl: LoadingController, ) {
     }
 
     getStudentsCourseStats(courseCode) {
@@ -45,10 +50,6 @@ export class GraficoCursoPage {
 
         this.academiaProvider.student_courses_stats(rut, apiKey).subscribe(
             (result: any) => {
-                console.log("------------------------- RESULT ----------------------");
-                console.log(result);
-                console.log("-------------------------------------------------------");
-
                 this.courses = result
                     .map(c => {
                         return {
@@ -61,14 +62,7 @@ export class GraficoCursoPage {
                     .sort((a, b) => a.year - b.year);
 
                 this.years = this.uniques(this.courses.map(c => c.year));
-                console.log("Años");
-                console.log(this.years);
-
-                console.log("VOYY AS ASDAS GRAFICAOSASD");
                 this.showGraph();
-
-                console.log(this.courses);
-                console.log(this.years);
             },
             error => {
             }
@@ -76,20 +70,21 @@ export class GraficoCursoPage {
     }
 
     showGraph() {
+        let loader = this.loadingCtrl.create({
+            content: "Cargando informacion..."
+        });
+
+        loader.present();
+
+
+
         let requests = this.courses
             .map(c => {
-                console.log("------------------- C ---------------------")
-                console.log(c);
-                console.log("-------------------------------------------");
-
-                console.log(c.year);
-
                 let code = c.code;
                 let year = c.year;
                 let semester = c.ordinal;
                 let apiKey = this.loginProvider.user.apiKey;
 
-                console.log([code, year, semester, apiKey]);
                 return this.academiaProvider.course_stats(code, year, semester, apiKey);
             })
 
@@ -98,24 +93,11 @@ export class GraficoCursoPage {
                 result = [].concat.apply([], result)
                     .sort((a, b) => a.year - b.year);
 
-                console.log("RESSSSSUUUUUUULT");
-                console.log(result);
-
-                console.log("YEARRSSS");
-                console.log(this.years);
-
-                console.log("Resullllt");
-                console.log(result);
-
                 let studentAvg = this.calculateStudentAverages(this.courses);
                 let everyoneAvg = this.calculateStudentAverages(result);
 
-                console.log("studentAvg: " + studentAvg);
-                console.log("EveryoneAvg: " + everyoneAvg);
-
-                console.log("Cargando grafico");
                 let canvas = document.getElementById("canvas");
-                let chart = new Chart(canvas, {
+                this.chart = new Chart(canvas, {
                     type: "line",
                     data: {
                         labels: this.years,
@@ -135,6 +117,8 @@ export class GraficoCursoPage {
 
 
                 });
+
+                loader.dismiss();
             },
             error => { }
         );
@@ -142,27 +126,15 @@ export class GraficoCursoPage {
     }
 
     calculateStudentAverages(courses) {
-        console.log("-------------------- Calculate averages ---------------------");
-        console.log(courses);
-        console.log("-------------------------------------------------------------");
-
         let averages = [];
-
 
         let sortedCourses = courses.sort((a, b) => a.year - b.year);
 
         for (let i = 0; i < this.years.length; i++) {
             let year = this.years[i];
             let thisYearCourses = sortedCourses.filter(c => c.year == year);
-            console.log("thisyearscourses");
-            console.log(thisYearCourses);
             let count = thisYearCourses.length;
-            console.log("summmmm");
             let sum = thisYearCourses.reduce((a, b) => {
-                console.log("a = " + a);
-                console.log(b);
-                console.log(a + " + " + b.grade);
-
                 if (b.grade) {
                     return a + b.grade;
                 }

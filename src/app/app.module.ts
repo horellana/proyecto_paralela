@@ -2,6 +2,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
+import { MenuPage } from '../pages/menu/menu';
 import { HomeEstudiantePage } from '../pages/home-estudiante/home-estudiante';
 import { ListadoEstudiantesPage } from '../pages/listado-estudiantes/listado-estudiantes';
 import { CloudPage } from '../pages/cloud/cloud';
@@ -16,9 +18,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HttpClientModule } from '@angular/common/http';
-import { LoginProvider } from './../providers/login/login';
 
-import { MenuPage } from '../pages/menu/menu';
+import { LoginProvider } from './../providers/login/login';
 import { AcademiaProvider } from '../providers/academia/academia';
 
 @NgModule({

@@ -29,21 +29,6 @@ export class ListadoEstudiantesPage {
         this.loadStudentCourses();
     }
 
-    sameCourse(studentCourse, everyoneCourse) {
-        let a = studentCourse;
-        let b = everyoneCourse;
-
-        // console.log("Comparing");
-        // console.log(studentCourse.course.subject.code);
-        // console.log(everyoneCourse.code);
-
-        let equal_p = (a.course.subject.code === b.code)
-
-        // console.log(equal_p);
-
-        return equal_p;
-    }
-
     loadStudentCourses() {
         this.loader = this.loadingCtrl.create({
             content: "Cargando informacion..."
@@ -56,24 +41,15 @@ export class ListadoEstudiantesPage {
         this.academiaProvider.student_courses_stats(rut, apiKey).subscribe
             (
             result => {
-                console.log(result);
                 this.studentCourses = result;
-                console.log("this.studentCourses = ");
-                console.log(this.studentCourses);
                 this.loadEveryoneCourses();
             },
             error => {
-                console.log("------------ Listado Estudiantes Error -------------");
-                console.log(error);
-                console.log("----------------------------------------------------");
             });
     }
 
     loadEveryoneCourses() {
         let requests = this.studentCourses.map(c => {
-            console.log("loadEveryoneCourses");
-            console.log(c);
-
             let code = c.course.subject.code;
             let year = c.course.year;
             let semester = c.course.ordinal;
@@ -84,14 +60,9 @@ export class ListadoEstudiantesPage {
 
         forkJoin(requests).subscribe(
             result => {
-                console.log("result");
-                console.log(result);
                 this.everyoneCourses = [].concat.apply([], result);
                 this.loader.dismiss();
-
                 this.prepareDataTable();
-                console.log("this.everyoneCourses = ");
-                console.log(this.everyoneCourses);
             }
         )
     }
@@ -116,8 +87,5 @@ export class ListadoEstudiantesPage {
 
             }
         }
-
-        console.log("this.table");
-        console.log(this.table);
     }
 }
