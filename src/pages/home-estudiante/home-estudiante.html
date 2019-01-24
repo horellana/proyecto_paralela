@@ -1,36 +1,67 @@
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
-      <ion-icon name="list">
-      </ion-icon>
-    </button>
-
+          <ion-icon name="list">
+          </ion-icon>
+        </button>
         <ion-title>Home</ion-title>
     </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
+
+    <ion-item>
+        <div text-center>
+            <h1> {{ nombreEstudiante}} </h1>
+        </div>
+    </ion-item>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-avatar item-left>
+                <ion-icon name="stats"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+                <h2> Estadisticos </h2>
+            </ion-label>
+        </ion-item>
+
+    </ion-list>
+
     <ion-list>
         <ion-item>
-            <label>
-        {{ nombreEstudiante}}
-      </label>
+            <ion-avatar item-left>
+                <img src="assets/img/Ranking.png" />
+            </ion-avatar>
+            <ion-label>
+                <h2> Ranking </h2>
+                <p> {{ ranking }}</p>
+            </ion-label>
         </ion-item>
 
         <ion-item>
-          Ranking: {{ ranking }}
+            <ion-avatar item-left>
+                <img src="assets/img/Estadisticos.png " />
+            </ion-avatar>
+            <ion-label>
+                <h2> Ramos tomados</h2>
+                <h3> {{ ramosTomados }}</h3>
+            </ion-label>
         </ion-item>
 
         <ion-item>
-            Ramos tomados: {{ ramosTomados }}
-        </ion-item>
-
-        <ion-item>
-            Promedio cursados: {{ promedioRamos }}
+            <ion-avatar item-left>
+                <img src="assets/img/Estadisticos.png " />
+            </ion-avatar>
+            <ion-label>
+                <h2> Promedio Ramos</h2>
+                <h3> {{ promedioRamos }}</h3>
+            </ion-label>
         </ion-item>
     </ion-list>
 
     <canvas id="canvas">
-  </canvas>
+        </canvas>
+
 </ion-content>
