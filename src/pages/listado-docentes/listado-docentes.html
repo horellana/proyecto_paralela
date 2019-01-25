@@ -1,63 +1,82 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
+    <ion-navbar>
+        <button ion-button menuToggle>
       <ion-icon name="ios-apps">
       </ion-icon>
     </button>
-
-    <ion-title>Listado Profesores</ion-title>
-  </ion-navbar>
-
+        <ion-title>
+            Listado Profesores
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label>
-        {{ this.teacherName }}
-      </ion-label>
-    </ion-item>
+    <ion-list>
+        <ion-item>
+            <h2>
+                {{ this.teacherName }}
+            </h2>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>
-        Ramo
-      </ion-label>
+        <ion-item>
+            <ion-label>
+                Ramo
+            </ion-label>
 
-      <ion-select [(ngModel)]="course" (ngModelChange)="onCourseSelect()">
-        <ion-option *ngFor="let courseName of availableCourses; let i = index"
-                    value="{{courseName}}"
-                    [selected]="i == 0">
-          {{ courseName }}
-        </ion-option>
-      </ion-select>
-    </ion-item>
+            <ion-select [(ngModel)]="course" (ngModelChange)="onCourseSelect()">
+                <ion-option *ngFor="let courseName of availableCourses; let i = index" value="{{courseName}}" [selected]="i == 0">
+                    {{ courseName }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
 
-  </ion-list>
 
-  <ion-list>
-    <div *ngIf="shownCourses">
-    <ion-item *ngFor="let course of shownCourses">
-      <h2>
-        {{ course.teacherName }}
-      </h2>
+    <ion-list>
+        <div *ngIf="shownCourses">
+            <ion-item *ngFor="let course of shownCourses">
+                <h2>
+                    {{ course.teacherName }}
+                </h2>
 
-      <p>
-        Semestre = {{ course.semester }} - {{ course.year }}
-        <p>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="assets/img/Calendario.png" />
+                    </ion-avatar>
+                    <label>
+                      <h3> Semestre:  {{ course.semester }} - {{ course.year }} </h3>
+                    </label>
+                </ion-item>
 
-          <p>
-            Promedio = {{ course.average }}
-          </p>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="assets/img/Profesor.png" />
+                    </ion-avatar>
+                    <label>
+                        <h3> Promedio Alumons = {{ course.average }} </h3>
+                     </label>
+                </ion-item>
 
-          <p>
-            STDDEV = {{ course.stddev }}
-          </p>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="assets/img/Cal.png" />
+                    </ion-avatar>
+                    <label>
+                        <h3> STDDEV Alumnos = {{ course.stddev }} </h3>
+                     </label>
+                </ion-item>
 
-          <p>
-            A / R = {{ course.aproved }} / {{ course.reproved }}
-          </p>
-    </ion-item>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="assets/img/Aprorepro.png" />
+                    </ion-avatar>
+                    <label>
+                        <h3> Aprobados / Reprobados = {{ course.aproved }} / {{ course.reproved }} </h3>
+                     </label>
+                </ion-item>
+
+            </ion-item>
         </div>
-  </ion-list>
+    </ion-list>
 </ion-content>
