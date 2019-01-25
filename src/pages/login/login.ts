@@ -39,14 +39,21 @@ export class LoginPage {
 
         this.academiaProvider.setBackendUrl(this.loginForm.value.backendUrl);
 
-        this.loginProvider
-            .tryLogin(
-            this.loginForm.value.rut,
-            this.loginForm.value.password,
-            this.academiaProvider.backendUrl
-            )
-            .subscribe(this.onLogin,
-            this.onLoginError);
+        this.academiaProvider.heartbeat().subscribe(
+            ok => {
+                this.loginProvider
+                    .tryLogin(
+                    this.loginForm.value.rut,
+                    this.loginForm.value.password,
+                    this.academiaProvider.backendUrl
+                    )
+                    .subscribe(this.onLogin,
+                    this.onLoginError);
+
+            },
+            error => { this.serverDownAlert() }
+
+        );
     }
 
     onLogin(result) {
@@ -63,6 +70,14 @@ export class LoginPage {
 
     forgotPassword() {
         this.navCtrl.push(RecuperarContraseAPage);
+    }
+
+    serverDownAlert() {
+        return this.alertCtrl
+            .create({
+                title: "Error",
+                subTitle: "El backend no esta disponible"
+            });
     }
 
     missingDataAlert() {
