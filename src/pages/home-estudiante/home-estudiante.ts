@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
-import { ChartModule } from 'angular2-chartjs';
 import 'chartjs-plugin-labels';
 
 import { LoginProvider } from '../../providers/login/login';
@@ -33,7 +32,8 @@ export class HomeEstudiantePage {
 
     ionViewDidLoad() {
         let rut = this.loginProvider.user.rut;
-        let url = `https://api.sebastian.cl/academia/api/v1/courses/students/${rut}/`;
+        let url = this.academiaProvider.backendUrl + `courses/students/${rut}`;
+        // let url = `https://api.sebastian.cl/academia/api/v1/courses/students/${rut}/`;
         let apiKey = this.loginProvider.user.apiKey;
 
         this.academiaProvider.rankingStudent(rut, apiKey).subscribe(
