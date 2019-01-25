@@ -83,7 +83,7 @@ export class HomeEstudiantePage {
                         },
                         title: {
                             display: true,
-                            text: 'Aprobados vs Reprovados',
+                            text: 'Aprobados vs Reprobados',
                             fontSize: 15
                         },
                         labels: {
