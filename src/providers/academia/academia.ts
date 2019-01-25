@@ -28,6 +28,14 @@ export class AcademiaProvider {
         this.backendUrl = newUrl;
     }
 
+    heartbeat() {
+        let url = this.backendUrl + `heartbeat`;
+        return this.http.get(url);
+    }
+
+    sendMail() {
+    }
+
     forgotPassword(rut: string) {
         let url = this.backendUrl + `authentication/forgot/${rut}`;
         return this.http.post(url, {});

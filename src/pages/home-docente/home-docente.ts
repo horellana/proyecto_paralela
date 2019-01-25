@@ -5,6 +5,7 @@ import { AlertController } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
 import { LoginProvider } from '../../providers/login/login';
+import { AcademiaProvider } from '../../providers/academia/academia';
 
 
 @IonicPage()
@@ -26,12 +27,14 @@ export class HomeDocentePage {
         public navParams: NavParams,
         public httpClient: HttpClient,
         public alertCtrl: AlertController,
-        public loginProvider: LoginProvider) {
+        public loginProvider: LoginProvider,
+        public academiaProvider: AcademiaProvider) {
     }
 
     ionViewDidLoad() {
         let rut = this.loginProvider.user.rut;
-        let url = `https://api.sebastian.cl/academia/api/v1/courses/teachers/${rut}/stats`;
+        let url = this.academiaProvider.backendUrl + `courses/teachers/${rut}/stats`;
+        // let url = `https://api.sebastian.cl/academia/api/v1/courses/teachers/${rut}/stats`;
         const httpOptions = {
             headers: new HttpHeaders({ 'X-API-KEY': this.loginProvider.user.apiKey })
         };
