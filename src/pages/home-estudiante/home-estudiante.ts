@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
+import { ChartModule } from 'angular2-chartjs';
+import 'chartjs-plugin-labels';
+
 import { LoginProvider } from '../../providers/login/login';
 import { AcademiaProvider } from '../../providers/academia/academia';
 
@@ -66,20 +69,23 @@ export class HomeEstudiantePage {
                         }],
                         labels: ['Aprobados', 'Reprobados'],
                     },
-                    options:{
-                        legend:{
-                            display:true,
-                            position:'down'
+                    options: {
+                        plugins: {
+                            render: 'percentage'
                         },
-                        title:{
-                            display:true,
-                            text:'Grafico Aprobados vs Reprovados',
-                            fontSize:15
+                        legend: {
+                            display: true,
+                            position: 'down'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Grafico Aprobados vs Reprovados',
+                            fontSize: 15
                         },
                         labels: {
                             render: 'percentage',
                             precision: 2
-                        }   
+                        }
                     }
                 });
             },
