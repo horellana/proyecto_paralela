@@ -15,13 +15,12 @@ import { AcademiaProvider } from '../../providers/academia/academia';
 })
 export class HomeDocentePage {
     chart: any = null;
-
     nombreDocente: string;
-
     datos = [];
-
     promedioCursos: number;
     ramosImpartidos: number;
+    alumnosAprobados: number;
+    alumnosReprobados: number;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -46,9 +45,10 @@ export class HomeDocentePage {
                 this.nombreDocente = result[0].course.teacher.firstName + ' ' + result[0].course.teacher.lastName;
                 this.promedioCursos = this.calculateAvg(result);
                 this.ramosImpartidos = result.length;
+                this.alumnosAprobados = this.calculateGraphData(result);
+                this.alumnosReprobados = this.calculateGraphData(result);
 
                 let charData = this.calculateGraphData(result);
-
                 let canvas = document.getElementById("canvas");
                 this.chart = new Chart(canvas, {
                     type: 'pie',
@@ -61,6 +61,24 @@ export class HomeDocentePage {
                             ]
                         }],
                         labels: ['Aprobados', 'Reprobados']
+                    },
+                    options: {
+                        plugins: {
+                            render: 'percentage'
+                        },
+                        legend: {
+                            display: true,
+                            position: 'bottom'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Aprobados vs Reprovados',
+                            fontSize: 15
+                        },
+                        labels: {
+                            render: 'percentage',
+                            precision: 2
+                        }
                     }
                 });
             },
@@ -72,13 +90,10 @@ export class HomeDocentePage {
 
     calculateAvg(data: [any]) {
         let avg: number = 0;
-
         data.forEach(course => {
             avg = avg + course.average;
         });
-
         avg = avg / data.length;
-
         return Math.round(avg * 100) / 100;
     }
 

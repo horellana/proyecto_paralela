@@ -10,23 +10,68 @@
 </ion-header>
 
 
+
 <ion-content padding>
+
+    <ion-item>
+        <div text-center>
+            <h1> {{ nombreDocente}} </h1>
+        </div>
+    </ion-item>
+
     <ion-list>
+        <ion-list-header>
+            <ion-label>
+                <h2> Dotos del docente </h2>
+            </ion-label>
+        </ion-list-header>
+
         <ion-item>
-            <label>
-        {{ nombreDocente}}
-      </label>
+            <ion-avatar item-left>
+                <img src="assets/img/Ranking.png" />
+            </ion-avatar>
+            <ion-label>
+                <h2> Ramos impartidos </h2>
+                <p> {{ ramosImpartidos }} </p>
+            </ion-label>
         </ion-item>
 
         <ion-item>
-            Ramos impartidos: {{ ramosImpartidos }}
-        </ion-item>
-
-        <ion-item>
-            Promedio cursos: {{ promedioCursos }}
+            <ion-avatar item-left>
+                <img src="assets/img/Cal.png" />
+            </ion-avatar>
+            <ion-label>
+                <h2> Promedio cursos </h2>
+                <h3> {{ promedioCursos }}</h3>
+            </ion-label>
         </ion-item>
     </ion-list>
 
+
     <canvas id="canvas">
-  </canvas>
+        </canvas>
+
+
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="assets/img/Apro.png " />
+            </ion-avatar>
+            <ion-label>
+                <h2> Alumnos Aprobados</h2>
+                <h3> {{ alumnosAprobados }}</h3>
+            </ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="assets/img/Repro.png " />
+            </ion-avatar>
+            <ion-label>
+                <h2> Alumnos Reprobados</h2>
+                <h3> {{ alumnosReprobados }}</h3>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
 </ion-content>

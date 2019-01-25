@@ -21,6 +21,8 @@ export class HomeEstudiantePage {
     promedioRamos: number;
     ramosTomados: number;
     ranking: number;
+    ramosAprobados: number;
+    ramosReprobados: number;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -54,6 +56,8 @@ export class HomeEstudiantePage {
                 this.nombreEstudiante = result[0].student.firstName + ' ' + result[0].student.lastName;
                 this.promedioRamos = this.calculateAvg(result);
                 this.ramosTomados = result.length;
+                this.ramosAprobados = this.calculateAproved(result);
+                this.ramosReprobados = this.calculateReproved(result);
                 let charData = this.calculateGraphData(result);
                 let canvas = document.getElementById("canvas");
 
@@ -75,11 +79,11 @@ export class HomeEstudiantePage {
                         },
                         legend: {
                             display: true,
-                            position: 'down'
+                            position: 'bottom'
                         },
                         title: {
                             display: true,
-                            text: 'Grafico Aprobados vs Reprovados',
+                            text: 'Aprobados vs Reprovados',
                             fontSize: 15
                         },
                         labels: {
@@ -115,6 +119,26 @@ export class HomeEstudiantePage {
             }
         });
         return [aproved, reproved];
+    }
+    calculateReproved(data: [any]) {
+        let reproved = 0;
+        data.forEach(course => {
+            if (course.status === "REPROBADO") {
+                reproved = reproved + 1;
+            }
+            
+        });
+        return [ reproved];
+    }
+    calculateAproved(data: [any]) {
+        let aproved = 0;
+        data.forEach(course => {
+            if (course.status === "APROBADO") {
+                aproved = aproved + 1;
+            }
+            
+        });
+        return [ aproved];
     }
 
     errorLoadingDataAlert() {
