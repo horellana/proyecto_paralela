@@ -33,7 +33,22 @@ export class AcademiaProvider {
         return this.http.get(url);
     }
 
-    sendMail() {
+    sendMail(email, subject, content, name, apiKey) {
+        let url = this.backendUrl + 'email/send';
+
+        let httpOptions = {
+            headers: new HttpHeaders({ 'X-API-KEY': apiKey })
+        };
+
+        let data = {
+            email: email,
+            message: content,
+            subject: subject,
+            html: false,
+            name: "Juanito Perez"
+        };
+
+        return this.http.post(url, data, httpOptions);
     }
 
     forgotPassword(rut: string) {
