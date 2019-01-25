@@ -45,8 +45,8 @@ export class HomeDocentePage {
                 this.nombreDocente = result[0].course.teacher.firstName + ' ' + result[0].course.teacher.lastName;
                 this.promedioCursos = this.calculateAvg(result);
                 this.ramosImpartidos = result.length;
-                this.alumnosAprobados = this.calculateGraphData(result);
-                this.alumnosReprobados = this.calculateGraphData(result);
+                this.alumnosAprobados = this.calculateGraphData(result)[0];
+                this.alumnosReprobados = this.calculateGraphData(result)[1];
 
                 let charData = this.calculateGraphData(result);
                 let canvas = document.getElementById("canvas");

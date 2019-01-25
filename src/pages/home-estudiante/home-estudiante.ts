@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Option } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 
@@ -126,9 +126,9 @@ export class HomeEstudiantePage {
             if (course.status === "REPROBADO") {
                 reproved = reproved + 1;
             }
-            
+
         });
-        return [ reproved];
+        return reproved;
     }
     calculateAproved(data: [any]) {
         let aproved = 0;
@@ -136,9 +136,9 @@ export class HomeEstudiantePage {
             if (course.status === "APROBADO") {
                 aproved = aproved + 1;
             }
-            
+
         });
-        return [ aproved];
+        return aproved;
     }
 
     errorLoadingDataAlert() {
