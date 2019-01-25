@@ -1,36 +1,41 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
+    <ion-navbar>
+        <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      Avisos Profesor
-    </ion-title>
-  </ion-navbar>
+        <ion-title>
+            Avisos Profesor
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding id="page7">
-  <form id="avisosProfesor-form7">
-    <ion-item>
-      <ion-label floating>
-        Destinatario
-      </ion-label>
+    <form id="avisosProfesor-form7">
+        <ion-item>
+            <ion-label floating>
+                Destinatario
+            </ion-label>
+            <ion-input type="email" pattern=".+@.+" name="email" [(ngModel)]="email">
+            </ion-input>
+        </ion-item>
 
-      <ion-input type="email" pattern=".+@.+" name="email" [(ngModel)]="email" >
-      </ion-input>
-    </ion-item>
-    <ion-item id="avisosProfesor-input10">
-    </ion-item>
 
-    <ion-item>
-      <ion-textarea floating placeholder="Mensaje" [(ngModel)]="message" name="message">
-      </ion-textarea>
-    </ion-item>
-  </form>
+        <ion-item>
+            <ion-label floating>
+                Asunto
+            </ion-label>
+            <ion-input type="text">
+            </ion-input>
+        </ion-item>
 
-  <br>
+        <ion-item margin-bottom>
+            <ion-textarea floating placeholder="Mensaje" id="story" name="message" rows="10" cols="33">
+            </ion-textarea>
+        </ion-item>
 
-  <button id="avisosProfesor-button43" ion-button color="positive" block on-click="onSendMail()">
+    </form>
+
+    <button id="avisosProfesor-button43" ion-button color="positive" block on-click="onSendMail()">
     Enviar
   </button>
 </ion-content>
