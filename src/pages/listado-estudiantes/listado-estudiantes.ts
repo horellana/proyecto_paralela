@@ -82,9 +82,7 @@ export class ListadoEstudiantesPage {
                         semester: s.semester,
                         year: s.year
                     });
-
                 }
-
             }
         }
     }

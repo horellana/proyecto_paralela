@@ -45,7 +45,8 @@ export class AcademiaProvider {
             message: content,
             subject: subject,
             html: false,
-            name: "Juanito Perez"
+            name: "Juanito Perez",
+            token: apiKey
         };
 
         return this.http.post(url, data, httpOptions);
