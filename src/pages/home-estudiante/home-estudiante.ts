@@ -64,21 +64,22 @@ export class HomeEstudiantePage {
                                 'rgb(255, 99, 132)' // Rojo
                             ],
                         }],
-                        labels: ['Aprobados', 'Reprobados'],
+                        labels:['Aprobados', 'Reprobados'],
                     },
                     options:{
                         legend:{
                             display:true,
-                            position:'down'
+                            position:'bottom'
                         },
                         title:{
                             display:true,
-                            text:'Grafico Aprobados vs Reprovados',
+                            text:'Aprobados vs Reprovados',
                             fontSize:15
                         },
                         labels: {
-                            render: 'percentage',
-                            precision: 2
+                                render: 'percentage',
+                                precision: 2,
+
                         }   
                     }
                 });
