@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
+// import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
 import { AlertController } from 'ionic-angular';
 import { AcademiaProvider } from '../../providers/academia/academia';
 
@@ -29,16 +29,16 @@ export class AvisosProfesorPage {
                 .present();
         }
 
-        this.academiaProvider.sendMail().subscribe(
-            result => {
+        // this.academiaProvider.sendMail().subscribe(
+        //     result => {
 
-            },
-            error => {
-                this.alertCtrl.create({
-                    title: "Error",
-                    subTitle: error
-                }).present();
-            }
-        )
+        //     },
+        //     error => {
+        //         this.alertCtrl.create({
+        //             title: "Error",
+        //             subTitle: error
+        //         }).present();
+        //     }
+        // )
     }
 }
