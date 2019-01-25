@@ -11,19 +11,26 @@
 
 <ion-content padding id="page7">
   <form id="avisosProfesor-form7">
-    <ion-item id="avisosProfesor-input10">
-      <ion-label>
-        Mensaje:
+    <ion-item>
+      <ion-label floating>
+        Destinatario
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+
+      <ion-input type="email" pattern=".+@.+" name="email" [(ngModel)]="email" >
+      </ion-input>
     </ion-item>
-    <ion-item id="avisosProfesor-textarea1">
-      <ion-label></ion-label>
-      <ion-textarea placeholder=""></ion-textarea>
+    <ion-item id="avisosProfesor-input10">
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea floating placeholder="Mensaje" [(ngModel)]="message" name="message">
+      </ion-textarea>
     </ion-item>
   </form>
 
-  <button id="avisosProfesor-button43" ion-button color="positive" block on-click="goToPrincipal()">
+  <br>
+
+  <button id="avisosProfesor-button43" ion-button color="positive" block on-click="onSendMail()">
     Enviar
   </button>
 </ion-content>
