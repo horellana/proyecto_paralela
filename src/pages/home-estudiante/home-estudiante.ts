@@ -45,6 +45,10 @@ export class HomeEstudiantePage {
                 this.ranking = data.position;
             },
             error => {
+                this.alertCtrl.create({
+                    title: "Error",
+                    subTitle: "Error al cargar los datos"
+                }).present();
             });
 
         const httpOptions = {

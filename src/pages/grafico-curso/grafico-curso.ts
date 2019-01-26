@@ -9,6 +9,7 @@ import { AcademiaProvider } from '../../providers/academia/academia';
 import { Chart } from 'chart.js';
 
 import { LoadingController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class GraficoCursoPage {
     constructor(public navCtrl: NavController,
         public academiaProvider: AcademiaProvider,
         public loginProvider: LoginProvider,
-        public loadingCtrl: LoadingController, ) {
+        public loadingCtrl: LoadingController,
+        public alertCtrl: AlertController) {
     }
 
     getStudentsCourseStats(courseCode) {
@@ -45,6 +47,10 @@ export class GraficoCursoPage {
                 this.name = `${result.firstName} ${result.lastName}`;
             },
             error => {
+                this.alertCtrl.create({
+                    title: "Error",
+                    subTitle: "Error al cargar los datos"
+                }).present();
             }
         );
 
@@ -65,6 +71,10 @@ export class GraficoCursoPage {
                 this.showGraph();
             },
             error => {
+                this.alertCtrl.create({
+                    title: "Error",
+                    subTitle: "Error al cargar los datos"
+                }).present();
             }
         );
     }
@@ -75,8 +85,6 @@ export class GraficoCursoPage {
         });
 
         loader.present();
-
-
 
         let requests = this.courses
             .map(c => {
@@ -120,7 +128,14 @@ export class GraficoCursoPage {
 
                 loader.dismiss();
             },
-            error => { }
+            error => {
+                this.alertCtrl.create({
+                    title: "Error",
+                    subTitle: "Error al cargar los datos"
+                }).present();
+
+                loader.dismiss();
+            }
         );
 
     }
