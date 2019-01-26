@@ -51,7 +51,7 @@ export class LoginPage {
                     this.onLoginError);
 
             },
-            error => { this.serverDownAlert() }
+            error => { this.serverDownAlert().present() }
 
         );
     }
