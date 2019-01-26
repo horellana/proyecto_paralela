@@ -15,9 +15,9 @@ export class ListadoEstudiantesPage {
     everyoneCourses = null;
 
     loader = null;
-
-
     table = [];
+
+    shownCount = 0;
 
     constructor(public navCtrl: NavController,
         public loadingCtrl: LoadingController,
@@ -26,15 +26,11 @@ export class ListadoEstudiantesPage {
     }
 
     ionViewDidLoad() {
+        this.table = [];
         this.loadStudentCourses();
     }
 
     loadStudentCourses() {
-        this.loader = this.loadingCtrl.create({
-            content: "Cargando informacion..."
-        });
-        this.loader.present();
-
         let rut = this.loginProvider.user.rut;
         let apiKey = this.loginProvider.user.apiKey;
 
@@ -49,28 +45,35 @@ export class ListadoEstudiantesPage {
     }
 
     loadEveryoneCourses() {
-        let requests = this.studentCourses.map(c => {
-            let code = c.course.subject.code;
-            let year = c.course.year;
-            let semester = c.course.ordinal;
-            let apiKey = this.loginProvider.user.apiKey;
+        let slice = this.studentCourses.slice(this.shownCount, this.shownCount + 5)
 
-            return this.academiaProvider.course_stats(code, year, semester, apiKey);
-        });
+        let requests = slice
+            .map(c => {
+                let code = c.course.subject.code;
+                let year = c.course.year;
+                let semester = c.course.ordinal;
+                let apiKey = this.loginProvider.user.apiKey;
+
+
+                return this.academiaProvider.course_stats(code, year, semester, apiKey);
+            });
 
         forkJoin(requests).subscribe(
             result => {
                 this.everyoneCourses = [].concat.apply([], result);
-                this.loader.dismiss();
                 this.prepareDataTable();
             }
         )
+
+        if (this.shownCount < this.studentCourses.length) {
+            setTimeout(() => this.loadEveryoneCourses(), 1000);
+        }
     }
 
     prepareDataTable() {
-        this.table = [];
+        let slice = this.studentCourses.slice(this.shownCount, this.shownCount + 5)
 
-        for (let c of this.studentCourses) {
+        for (let c of slice) {
             for (let s of this.everyoneCourses) {
                 if (c.course.code === s.uniqueCode
                 ) {
@@ -85,5 +88,7 @@ export class ListadoEstudiantesPage {
                 }
             }
         }
+
+        this.shownCount = this.shownCount + 5;
     }
 }
