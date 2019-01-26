@@ -95,5 +95,27 @@ export class ListadoEstudiantesPage {
         }
 
         this.shownCount = this.shownCount + 2;
+
+        this.table = this.table
+            .sort((a, b) => {
+                // return 1 => a es mayor
+                // return 0 => a == b
+                // return -1 => a < b
+                if (a.year > b.year) {
+                    return 1;
+                }
+                else if (a.year < b.year) {
+                    return -1;
+                }
+                else if (a.semester > b.semester) {
+                    return 1;
+                }
+                else if (a.semester < b.semester) {
+                    return -1;
+                }
+                else {
+                    return 0;
+                }
+            }).reverse();
     }
 }

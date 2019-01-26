@@ -94,7 +94,29 @@ export class ListadoDocentesPage {
 
         forkJoin(requests).subscribe(
             (result) => {
-                this.shownCourses = [].concat.apply([], result);
+                let data = [].concat.apply([], result).sort((a, b) => {
+                    // return 1 => a es mayor
+                    // return 0 => a == b
+                    // return -1 => a < b
+                    if (a.year > b.year) {
+                        return 1;
+                    }
+                    else if (a.year < b.year) {
+                        return -1;
+                    }
+                    else if (a.semester > b.semester) {
+                        return 1;
+                    }
+                    else if (a.semester < b.semester) {
+                        return -1;
+                    }
+                    else {
+                        return 0;
+                    }
+                })
+                    .reverse();
+
+                this.shownCourses = data;
                 loader.dismiss();
             },
 
