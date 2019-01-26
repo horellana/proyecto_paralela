@@ -23,12 +23,13 @@
             <ion-label>
                 Ramo
             </ion-label>
-
             <ion-select [(ngModel)]="course" (ngModelChange)="onCourseSelect()">
                 <ion-option *ngFor="let courseName of availableCourses; let i = index" value="{{courseName}}" [selected]="i == 0">
                     {{ courseName }}
                 </ion-option>
             </ion-select>
+
+
         </ion-item>
     </ion-list>
 
