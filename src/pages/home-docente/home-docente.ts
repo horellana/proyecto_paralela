@@ -7,6 +7,8 @@ import { Chart } from 'chart.js';
 import { LoginProvider } from '../../providers/login/login';
 import { AcademiaProvider } from '../../providers/academia/academia';
 
+import * as math from 'mathjs'
+
 
 @IonicPage()
 @Component({
@@ -17,10 +19,12 @@ export class HomeDocentePage {
     chart: any = null;
     nombreDocente: string;
     datos = [];
+
     promedioCursos: number;
     ramosImpartidos: number;
     alumnosAprobados: number;
     alumnosReprobados: number;
+    stddev: number = 0;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -47,6 +51,7 @@ export class HomeDocentePage {
                 this.ramosImpartidos = result.length;
                 this.alumnosAprobados = this.calculateGraphData(result)[0];
                 this.alumnosReprobados = this.calculateGraphData(result)[1];
+                this.stddev = this.calculateStddev(result);
 
                 let charData = this.calculateGraphData(result);
                 let canvas = document.getElementById("canvas");
@@ -86,6 +91,11 @@ export class HomeDocentePage {
                 this.errorLoadingDataAlert().present()
             }
             );
+    }
+
+    calculateStddev(data: [any]) {
+        let averages = data.map(course => course.average);
+        return math.std(averages);
     }
 
     calculateAvg(data: [any]) {
