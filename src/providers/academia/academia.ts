@@ -45,7 +45,7 @@ export class AcademiaProvider {
             message: content,
             subject: subject,
             html: false,
-            name: "Juanito Perez",
+            name: name,
             token: apiKey
         };
 

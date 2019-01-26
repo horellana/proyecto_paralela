@@ -13,10 +13,17 @@
   <form id="avisosProfesor-form7">
     <ion-item>
       <ion-label floating>
-        Destinatario
+        Email Destinatario
       </ion-label>
+      <ion-input type="email" pattern=".+@.+" name="email" [(ngModel)]="email">
+      </ion-input>
+    </ion-item>
 
-      <ion-input type="email" pattern=".+@.+" name="email" [(ngModel)]="email" >
+    <ion-item>
+      <ion-label floating>
+        Nombre Destinatario
+      </ion-label>
+      <ion-input type="text" pattern=".+@.+" name="name" [(ngModel)]="name">
       </ion-input>
     </ion-item>
 
@@ -24,21 +31,16 @@
       <ion-label floating>
         Asunto
       </ion-label>
-
-      <ion-input type="text" name="subject" [(ngModel)]="subject" >
+      <ion-input type="text" name="subject" [(ngModel)]="subject">
       </ion-input>
     </ion-item>
 
-    <ion-item id="avisosProfesor-input10">
-    </ion-item>
-
-    <ion-item>
-      <ion-textarea floating placeholder="Mensaje" [(ngModel)]="message" name="message">
+    <ion-item margin-bottom>
+      <ion-textarea floating placeholder="Mensaje" id="story" name="message" rows="10" cols="33" [(ngModel)]="message">
       </ion-textarea>
     </ion-item>
-  </form>
 
-  <br>
+  </form>
 
   <button id="avisosProfesor-button43" ion-button color="positive" block on-click="onSendMail()">
     Enviar
