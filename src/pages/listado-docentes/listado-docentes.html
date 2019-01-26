@@ -1,83 +1,92 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
+  <ion-navbar>
+    <button ion-button menuToggle>
       <ion-icon name="ios-apps">
       </ion-icon>
     </button>
-        <ion-title>
-            Listado Profesores
-        </ion-title>
-    </ion-navbar>
+    <ion-title>
+      Listado Profesores
+    </ion-title>
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-    <ion-list>
+  <ion-list>
+    <ion-item>
+      <h2>
+        {{ this.teacherName }}
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Ramo
+      </ion-label>
+
+      <ion-select [(ngModel)]="course" (ngModelChange)="onCourseSelect()">
+        <ion-option *ngFor="let courseName of availableCourses; let i = index" value="{{courseName}}" [selected]="i == 0">
+          {{ courseName }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list>
+    <div *ngIf="shownCourses">
+      <ion-item *ngFor="let course of shownCourses">
+        <h2>
+          {{ course.teacherName }}
+        </h2>
+
         <ion-item>
-            <h2>
-                {{ this.teacherName }}
-            </h2>
+          <ion-avatar item-left>
+            <img src="assets/img/Calendario.png" />
+          </ion-avatar>
+          <label>
+            <h3> Semestre  </h3>
+            <p>
+              {{ course.semester }} - {{ course.year }}
+            </p>
+          </label>
         </ion-item>
 
         <ion-item>
-            <ion-label>
-                Ramo
-            </ion-label>
-
-            <ion-select [(ngModel)]="course" (ngModelChange)="onCourseSelect()">
-                <ion-option *ngFor="let courseName of availableCourses; let i = index" value="{{courseName}}" [selected]="i == 0">
-                    {{ courseName }}
-                </ion-option>
-            </ion-select>
+          <ion-avatar item-left>
+            <img src="assets/img/Profesor.PNG" />
+          </ion-avatar>
+          <label>
+            <h3> Promedio Alumnos </h3>
+            <p>
+              {{ course.average }}
+            </p>
+          </label>
         </ion-item>
-    </ion-list>
 
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="assets/img/Cal.png" />
+          </ion-avatar>
+          <label>
+            <h3> STDDEV Alumnos </h3>
+            <p>
+              {{ course.stddev }}
+            </p>
+          </label>
+        </ion-item>
 
-    <ion-list>
-        <div *ngIf="shownCourses">
-            <ion-item *ngFor="let course of shownCourses">
-                <h2>
-                    {{ course.teacherName }}
-                </h2>
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="assets/img/Aprorepro.PNG" />
+          </ion-avatar>
+          <label>
+            <h3> Aprobado/Reprobado</h3>
+            <p>{{ course.aproved }} / {{ course.reproved }}</p>
+          </label>
+        </ion-item>
 
-                <ion-item>
-                    <ion-avatar item-left>
-                        <img src="assets/img/Calendario.png" />
-                    </ion-avatar>
-                    <label>
-                      <h3> Semestre:  {{ course.semester }} - {{ course.year }} </h3>
-                    </label>
-                </ion-item>
-
-                <ion-item>
-                    <ion-avatar item-left>
-                        <img src="assets/img/Profesor.PNG" />
-                    </ion-avatar>
-                    <label>
-                        <h3> Promedio Alumnos = {{ course.average }} </h3>
-                     </label>
-                </ion-item>
-
-                <ion-item>
-                    <ion-avatar item-left>
-                        <img src="assets/img/Cal.png" />
-                    </ion-avatar>
-                    <label>
-                        <h3> STDDEV Alumnos = {{ course.stddev }} </h3>
-                     </label>
-                </ion-item>
-
-                <ion-item>
-                    <ion-avatar item-left>
-                        <img src="assets/img/Aprorepro.PNG" />
-                    </ion-avatar>
-                    <label>
-                        <h3> Aprobado/Reprobado</h3>
-                        <p>{{ course.aproved }} / {{ course.reproved }}</p>
-                     </label>
-                </ion-item>
-
-            </ion-item>
-        </div>
-    </ion-list>
+      </ion-item>
+    </div>
+  </ion-list>
 </ion-content>
