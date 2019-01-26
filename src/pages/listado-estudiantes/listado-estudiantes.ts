@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 import { forkJoin } from "rxjs/observable/forkJoin";
 
@@ -21,6 +22,7 @@ export class ListadoEstudiantesPage {
 
     constructor(public navCtrl: NavController,
         public loadingCtrl: LoadingController,
+        public alertCtrl: AlertController,
         public academiaProvider: AcademiaProvider,
         public loginProvider: LoginProvider) {
     }
@@ -41,11 +43,15 @@ export class ListadoEstudiantesPage {
                 this.loadEveryoneCourses();
             },
             error => {
+                this.alertCtrl.create({
+                    title: 'Error',
+                    subTitle: "Error al cargar los datos"
+                });
             });
     }
 
     loadEveryoneCourses() {
-        let slice = this.studentCourses.slice(this.shownCount, this.shownCount + 5)
+        let slice = this.studentCourses.slice(this.shownCount, this.shownCount + 2)
 
         let requests = slice
             .map(c => {
@@ -53,7 +59,6 @@ export class ListadoEstudiantesPage {
                 let year = c.course.year;
                 let semester = c.course.ordinal;
                 let apiKey = this.loginProvider.user.apiKey;
-
 
                 return this.academiaProvider.course_stats(code, year, semester, apiKey);
             });
@@ -65,7 +70,7 @@ export class ListadoEstudiantesPage {
             }
         )
 
-        if (this.shownCount < this.studentCourses.length) {
+        if (this.shownCount <= this.studentCourses.length) {
             setTimeout(() => this.loadEveryoneCourses(), 1000);
         }
     }
@@ -89,6 +94,6 @@ export class ListadoEstudiantesPage {
             }
         }
 
-        this.shownCount = this.shownCount + 5;
+        this.shownCount = this.shownCount + 2;
     }
 }
