@@ -5,6 +5,7 @@ import { AlertController } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
 import 'chartjs-plugin-labels';
+import * as math from 'mathjs'
 
 import { LoginProvider } from '../../providers/login/login';
 import { AcademiaProvider } from '../../providers/academia/academia';
@@ -23,6 +24,7 @@ export class HomeEstudiantePage {
     ranking: number;
     ramosAprobados: number;
     ramosReprobados: number;
+    stddev: number = 0;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -58,6 +60,7 @@ export class HomeEstudiantePage {
                 this.ramosTomados = result.length;
                 this.ramosAprobados = this.calculateAproved(result);
                 this.ramosReprobados = this.calculateReproved(result);
+                this.stddev = this.calculateStddev(result);
                 let charData = this.calculateGraphData(result);
                 let canvas = document.getElementById("canvas");
 
@@ -96,6 +99,11 @@ export class HomeEstudiantePage {
             error => {
                 this.errorLoadingDataAlert().present()
             });
+    }
+
+    calculateStddev(data: [any]) {
+        let grades = data.map(course => course.grade);
+        return math.std(grades);
     }
 
     calculateAvg(data: [any]) {
