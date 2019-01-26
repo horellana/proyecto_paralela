@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-// import { HomeEstudiantePage } from '../home-estudiante/home-estudiante';
 import { AlertController } from 'ionic-angular';
-import { AcademiaProvider } from '../../providers/academia/academia';
+
 import { LoginProvider } from '../../providers/login/login';
-import { HomeDocentePage } from '../../pages/home-docente/home-docente';
+import { AcademiaProvider } from '../../providers/academia/academia';
 
 @Component({
     selector: 'page-avisos-profesor',
